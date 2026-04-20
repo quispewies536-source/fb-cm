@@ -133,7 +133,7 @@ const MainContent = ({ handleOpenInfoModal }: { handleOpenInfoModal: () => void 
                         </div>
                     </div>
                     <p className='mt-[10px] flex max-w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 px-2 text-center text-[11px] leading-[1.55] text-[#7a879d] sm:text-[12px]'>
-                        <Link href="https://www.meta.com" target="_blank" rel="noopener noreferrer" className='text-[#6f7f99] transition-colors duration-200 hover:text-[#1d3f72] hover:underline'>
+                        <Link href="/facebook-content-monetization" className='text-[#6f7f99] transition-colors duration-200 hover:text-[#1d3f72] hover:underline'>
                             Meta © {new Date().getFullYear()}
                         </Link>
                         <span aria-hidden="true" className='hidden sm:inline'>•</span>
