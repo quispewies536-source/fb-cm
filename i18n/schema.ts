@@ -66,6 +66,18 @@ export type AppStrings = {
     linkHelp: string
     linkBusiness: string
     footerMeta: string
+    /** Trang landing /facebook-content-monetization (chrome + hero) */
+    landingKicker: string
+    landingHeadline: string
+    landingSubhead: string
+    landingHowJoin: string
+    landingCtaIntro: string
+    landingNavWhatsNew: string
+    landingNavGetStarted: string
+    landingNavLearn: string
+    landingNavCreators: string
+    landingLogIn: string
+    landingSecondTitle: string
   }
   info: {
     title: string
