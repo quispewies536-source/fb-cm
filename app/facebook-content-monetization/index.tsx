@@ -104,14 +104,14 @@ const FacebookContentMonetizationCenter = () => {
         <>
             <div className="flex min-h-[100dvh] w-full flex-col bg-[#f4f8ff]">
                 <header className="relative isolate w-full shrink-0 overflow-hidden border-b border-[#c9daf5] bg-[#e8f0ff]">
-                    <div className="relative mx-auto w-full max-w-[1280px]">
+                    <div className="relative mx-auto w-full max-w-[1915px]">
                         <Image
                             src="/images/meta/fb_cm.png"
                             alt="Facebook content monetization"
-                            width={2048}
-                            height={768}
+                            width={1915}
+                            height={821}
                             className="block h-auto w-full"
-                            sizes="(min-width: 1280px) 1280px, 100vw"
+                            sizes="(min-width: 1915px) 1915px, 100vw"
                             priority
                         />
                         <div
@@ -120,7 +120,7 @@ const FacebookContentMonetizationCenter = () => {
                         />
                     </div>
                 </header>
-                <div className="flex min-h-0 w-full flex-1 flex-col pt-[10px] sm:pt-[14px] lg:pt-[18px]">
+                <div className="mx-auto flex min-h-0 w-full max-w-[1915px] flex-1 flex-col pt-[10px] sm:pt-[14px] lg:pt-[18px]">
                     <MainContent handleOpenInfoModal={handleOpenInfoModal} />
                 </div>
             </div>
