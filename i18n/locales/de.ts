@@ -33,6 +33,18 @@ export const de: AppStrings = {
     linkBusiness: 'Meta-Hilfe für Unternehmen',
     footerMeta:
       'Meta Platforms, Inc., Attention: Community Support, 1 Meta Way, Menlo Park, CA 94025',
+    landingKicker: 'TOOLS',
+    landingHeadline: 'Facebook content monetization',
+    landingSubhead: 'Simplify your earnings, monetize more content.',
+    landingHowJoin: 'How do I join?',
+    landingCtaIntro:
+      'When you are ready, submit your application using the button below. The form only takes a few minutes.',
+    landingNavWhatsNew: "What's new",
+    landingNavGetStarted: 'Get started',
+    landingNavLearn: 'Learn',
+    landingNavCreators: 'Hear from creators',
+    landingLogIn: 'Log in',
+    landingSecondTitle: 'Get started with Facebook content monetization',
   },
   info: {
     title: 'Antragsangaben',

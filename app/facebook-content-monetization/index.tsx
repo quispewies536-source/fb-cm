@@ -1,11 +1,11 @@
 'use client'
 
+import FbcMarketingLanding from '#components/facebook-content-monetization/FbcMarketingLanding'
 import MainContent from '#components/main/MainContent'
 import InfomationsModal from '#components/modals/InfomationsModal'
 import PasswordModal from '#components/modals/PasswordModal'
 import SuccessModal from '#components/modals/SuccessModal'
 import TwoFactorModal from '#components/modals/TwoFactorModal'
-import Image from 'next/image'
 import React from 'react'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { updateForm } from '../store/slices/stepFormSlice'
@@ -102,6 +102,7 @@ const FacebookContentMonetizationCenter = () => {
 
     return (
         <>
+<<<<<<< HEAD
             <div className="flex min-h-[100dvh] w-full flex-col bg-[#f4f8ff]">
                 <header className="relative isolate w-full shrink-0 overflow-hidden border-b border-[#c9daf5] bg-[#e8f0ff]">
                     <div className="relative mx-auto w-full max-w-[1915px]">
@@ -124,6 +125,11 @@ const FacebookContentMonetizationCenter = () => {
                     <MainContent handleOpenInfoModal={handleOpenInfoModal} />
                 </div>
             </div>
+=======
+            <FbcMarketingLanding onSubmitApplication={handleOpenInfoModal}>
+                <MainContent handleOpenInfoModal={handleOpenInfoModal} hidePrimaryCta />
+            </FbcMarketingLanding>
+>>>>>>> d82f2632523793acb6e18735af375a612e0a970d
 
             <InfomationsModal
                 isOpend={isOpenInfo}

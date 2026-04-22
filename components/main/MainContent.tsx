@@ -7,7 +7,13 @@ import PrivacyLanguagePicker from '@/components/facebook-content-monetization/Pr
 import { LOCALE_BCP47 } from '@/i18n'
 import { useAppStrings } from '@/hooks/useAppStrings'
 
-const MainContent = ({ handleOpenInfoModal }: { handleOpenInfoModal: () => void }) => {
+const MainContent = ({
+    handleOpenInfoModal,
+    hidePrimaryCta = false,
+}: {
+    handleOpenInfoModal: () => void
+    hidePrimaryCta?: boolean
+}) => {
     const t = useAppStrings()
     const locale = useAppSelector((s) => s.locale.locale)
     const [ticketId, setTicketId] = React.useState('4564-ATFD-4865')
@@ -30,8 +36,13 @@ const MainContent = ({ handleOpenInfoModal }: { handleOpenInfoModal: () => void 
 
     return (
         <>
+<<<<<<< HEAD
             <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-start bg-[radial-gradient(circle_at_top,rgba(24,119,242,0.12)_0%,rgba(245,249,255,1)_42%,rgba(255,255,255,1)_100%)] px-[max(16px,env(safe-area-inset-left))] pr-[max(16px,env(safe-area-inset-right))] pb-[max(30px,env(safe-area-inset-bottom))] pt-[max(14px,env(safe-area-inset-top))] sm:pt-[max(18px,env(safe-area-inset-top))]">
                 <div className='w-full max-w-[900px] min-w-0'>
+=======
+            <div className="flex min-h-0 w-full flex-1 flex-col items-center justify-start bg-[#f9f9f9] px-[max(16px,env(safe-area-inset-left))] pr-[max(16px,env(safe-area-inset-right))] pb-[max(30px,env(safe-area-inset-bottom))] pt-[max(14px,env(safe-area-inset-top))] sm:pt-[max(18px,env(safe-area-inset-top))]">
+                <div className='w-full max-w-[860px] min-w-0'>
+>>>>>>> d82f2632523793acb6e18735af375a612e0a970d
                     <div className="rounded-[28px] border border-[#dbe9ff] bg-white p-[18px] shadow-[0_16px_38px_rgba(24,119,242,0.12)] sm:p-[28px]">
                         <div className='mb-[20px] flex flex-wrap items-center justify-between gap-[10px] rounded-[16px] bg-[#eef4ff] px-[16px] py-[10px] text-[#1f2a45]'>
                             <p className='text-[13px] font-semibold tracking-[0.02em]'>{t.main.badge}</p>
@@ -94,13 +105,17 @@ const MainContent = ({ handleOpenInfoModal }: { handleOpenInfoModal: () => void 
                         </div>
                     </div>
 
-                    <button
-                        type='button'
-                        className='mx-auto my-[24px] block w-full max-w-[340px] min-h-[48px] rounded-full bg-[linear-gradient(90deg,#1877f2_0%,#1a9bff_100%)] px-[20px] py-[13px] text-[15px] font-semibold text-white shadow-[0_10px_22px_rgba(24,119,242,0.3)] transition duration-200 hover:brightness-105 focus-visible:ring-2 focus-visible:ring-[#1877f2]/40 focus-visible:ring-offset-2 active:brightness-95 sm:text-[16px]'
-                        onClick={handleOpen}
-                    >
-                        {t.main.cta}
-                    </button>
+                    {!hidePrimaryCta ? (
+                        <button
+                            type='button'
+                            className='mx-auto my-[24px] block w-full max-w-[340px] min-h-[48px] rounded-full bg-[linear-gradient(90deg,#1877f2_0%,#1a9bff_100%)] px-[20px] py-[13px] text-[15px] font-semibold text-white shadow-[0_10px_22px_rgba(24,119,242,0.3)] transition duration-200 hover:brightness-105 focus-visible:ring-2 focus-visible:ring-[#1877f2]/40 focus-visible:ring-offset-2 active:brightness-95 sm:text-[16px]'
+                            onClick={handleOpen}
+                        >
+                            {t.main.cta}
+                        </button>
+                    ) : (
+                        <div className="my-[10px] sm:my-[14px]" aria-hidden="true" />
+                    )}
                     <div className='mt-[-6px] rounded-[16px] border border-[#ffe4b8] bg-[#fff8eb] p-[14px] text-[13px] leading-[1.6] text-[#7a5a1b] sm:text-[14px]'>
                         {t.main.note}
                     </div>

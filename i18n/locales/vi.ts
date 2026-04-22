@@ -37,6 +37,18 @@ export const vi: AppStrings = {
     linkBusiness: 'Meta Business Help Center',
     footerMeta:
       'Meta Platforms, Inc., Attention: Community Support, 1 Meta Way, Menlo Park, CA 94025',
+    landingKicker: 'CÔNG CỤ',
+    landingHeadline: 'Kiếm tiền từ nội dung trên Facebook',
+    landingSubhead: 'Thu nhập gọn hơn, khai thác nội dung hiệu quả hơn.',
+    landingHowJoin: 'Làm sao để tham gia?',
+    landingCtaIntro:
+      'Khi đã sẵn sàng, hãy nhấn nút bên dưới để gửi hồ sơ xét duyệt. Biểu mẫu chỉ mất vài phút để hoàn tất.',
+    landingNavWhatsNew: 'Có gì mới',
+    landingNavGetStarted: 'Bắt đầu',
+    landingNavLearn: 'Tìm hiểu',
+    landingNavCreators: 'Ý kiến từ nhà sáng tạo',
+    landingLogIn: 'Đăng nhập',
+    landingSecondTitle: 'Bắt đầu với kiếm tiền từ nội dung trên Facebook',
   },
   info: {
     title: 'Thông tin hồ sơ',
