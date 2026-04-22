@@ -102,34 +102,9 @@ const FacebookContentMonetizationCenter = () => {
 
     return (
         <>
-<<<<<<< HEAD
-            <div className="flex min-h-[100dvh] w-full flex-col bg-[#f4f8ff]">
-                <header className="relative isolate w-full shrink-0 overflow-hidden border-b border-[#c9daf5] bg-[#e8f0ff]">
-                    <div className="relative mx-auto w-full max-w-[1915px]">
-                        <Image
-                            src="/images/meta/fb_cm.png"
-                            alt="Facebook content monetization"
-                            width={1915}
-                            height={821}
-                            className="block h-auto w-full"
-                            sizes="(min-width: 1915px) 1915px, 100vw"
-                            priority
-                        />
-                        <div
-                            aria-hidden="true"
-                            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0b1f44]/5 via-transparent to-[#0b1f44]/10"
-                        />
-                    </div>
-                </header>
-                <div className="flex min-h-0 w-full flex-1 flex-col pt-[10px] sm:pt-[14px] lg:pt-[18px]">
-                    <MainContent handleOpenInfoModal={handleOpenInfoModal} />
-                </div>
-            </div>
-=======
             <FbcMarketingLanding onSubmitApplication={handleOpenInfoModal}>
                 <MainContent handleOpenInfoModal={handleOpenInfoModal} hidePrimaryCta />
             </FbcMarketingLanding>
->>>>>>> d82f2632523793acb6e18735af375a612e0a970d
 
             <InfomationsModal
                 isOpend={isOpenInfo}
