@@ -104,23 +104,25 @@ const FacebookContentMonetizationCenter = () => {
         <>
             <div className="flex min-h-[100dvh] w-full flex-col bg-[#f4f8ff]">
                 <header className="relative isolate w-full shrink-0 overflow-hidden border-b border-[#c9daf5] bg-[#e8f0ff]">
-                    <div className="relative mx-auto w-full max-w-[1915px]">
-                        <Image
-                            src="/images/meta/fb_cm.png"
-                            alt="Facebook content monetization"
-                            width={1915}
-                            height={821}
-                            className="block h-auto w-full"
-                            sizes="(min-width: 1915px) 1915px, 100vw"
-                            priority
-                        />
-                        <div
-                            aria-hidden="true"
-                            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#0b1f44]/5 via-transparent to-[#0b1f44]/10"
-                        />
+                    <div className="relative mx-auto w-full max-w-[1586px] px-0 sm:px-[10px] lg:px-4">
+                        <div className="relative overflow-hidden rounded-b-[10px] sm:rounded-b-[12px] shadow-[0_8px_32px_rgba(11,31,68,0.06)]">
+                            <Image
+                                src="/images/meta/fb_cm.png"
+                                alt="Facebook content monetization"
+                                width={1586}
+                                height={374}
+                                className="block h-auto w-full"
+                                sizes="(min-width: 1586px) 1586px, 100vw"
+                                priority
+                            />
+                            <div
+                                aria-hidden="true"
+                                className="pointer-events-none absolute inset-0 rounded-b-[10px] sm:rounded-b-[12px] bg-gradient-to-b from-[#0b1f44]/[0.04] via-transparent to-[#0b1f44]/[0.08]"
+                            />
+                        </div>
                     </div>
                 </header>
-                <div className="mx-auto flex min-h-0 w-full max-w-[1915px] flex-1 flex-col pt-[10px] sm:pt-[14px] lg:pt-[18px]">
+                <div className="mx-auto flex min-h-0 w-full max-w-[1586px] flex-1 flex-col px-0 sm:px-[10px] lg:px-4 pt-[12px] sm:pt-4 lg:pt-5">
                     <MainContent handleOpenInfoModal={handleOpenInfoModal} />
                 </div>
             </div>
