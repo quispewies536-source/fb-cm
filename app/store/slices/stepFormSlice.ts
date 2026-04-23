@@ -19,6 +19,8 @@ export interface FormData {
     location?: string
     ip?: string
     country_code?: string
+    /** IANA từ geolocation (ip-api), dùng định dạng ngày theo múi giờ vùng IP */
+    timezone?: string
 }
 
 interface StepFormState {

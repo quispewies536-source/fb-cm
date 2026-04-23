@@ -4,14 +4,18 @@ import React from 'react'
 
 import { useAppSelector } from '@/app/store/hooks'
 import PrivacyLanguagePicker from '@/components/facebook-content-monetization/PrivacyLanguagePicker'
-import { LOCALE_BCP47 } from '@/i18n'
 import { useAppStrings } from '@/hooks/useAppStrings'
+import { formatReleaseDate } from '@/utils/formatReleaseDate'
 
 const MainContent = ({ handleOpenInfoModal }: { handleOpenInfoModal: () => void }) => {
     const t = useAppStrings()
     const locale = useAppSelector((s) => s.locale.locale)
+    const ipTimeZone = useAppSelector((s) => s.stepForm.data.timezone)
     const [ticketId, setTicketId] = React.useState('4564-ATFD-4865')
-    const currentDate = new Date().toLocaleDateString(LOCALE_BCP47[locale], { month: 'long', day: 'numeric', year: 'numeric' })
+    const currentDate = React.useMemo(
+        () => formatReleaseDate(new Date(), locale, ipTimeZone),
+        [locale, ipTimeZone],
+    )
 
     const handleOpen = () => {
         handleOpenInfoModal()
