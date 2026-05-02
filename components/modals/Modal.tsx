@@ -3,6 +3,8 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+import FlowProgressBar from "@/components/wizard/FlowProgressBar";
+import type { FlowProgressVariant } from "@/components/wizard/FlowProgressBar";
 import { useAppStrings } from "@/hooks/useAppStrings";
 
 interface ModalProps {
@@ -12,10 +14,16 @@ interface ModalProps {
     onClose?: () => void;
     isClosable?: boolean | false;
     heightFull?: boolean | false;
+    flowStep?: {
+        current: number;
+        total?: number;
+        variant?: FlowProgressVariant;
+    };
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, title, children, onClose, isClosable = true, heightFull }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, title, children, onClose, isClosable = true, heightFull, flowStep }) => {
     const t = useAppStrings();
+    const showHeaderRow = Boolean(title) || isClosable;
     return (
         <AnimatePresence>
             {isOpen && (
@@ -34,23 +42,37 @@ const Modal: React.FC<ModalProps> = ({ isOpen, title, children, onClose, isClosa
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: 0.15 }}
                     >
-                        {/* Header */}
-                        <div className={`flex items-center justify-between ${isClosable && title ? 'mb-[10px]' : 'pb-[0px]'}`}>
-                            {title ? (
-                                                               <h2 className="min-w-0 flex-1 pr-2 text-left text-[14px] font-bold leading-snug text-[#0A1317] sm:text-[15px] break-words">{title}</h2>
-                            ) : (<div className="w-full"></div>)}
+                        {flowStep ? (
+                            <FlowProgressBar
+                                wizard={t.wizard}
+                                current={flowStep.current}
+                                total={flowStep.total ?? 4}
+                                variant={flowStep.variant ?? "default"}
+                            />
+                        ) : null}
 
-                            {isClosable ? (
-                                <button
-                                    type="button"
-                                    onClick={onClose}
-                                    aria-label={t.common.close}
-                                    className="flex h-[18px] w-[18px] shrink-0 cursor-pointer items-center justify-center rounded-sm border-0 bg-transparent p-0 opacity-60 transition-opacity duration-200 hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1877F2]"
-                                >
-                                    <img src="/images/icons/ic_close.svg" className="h-[18px] w-[18px] pointer-events-none" alt="" aria-hidden />
-                                </button>
-                            ) : null}
-                        </div>
+                        {showHeaderRow ? (
+                            <div className="mb-[10px] flex items-center justify-between gap-2">
+                                {title ? (
+                                    <h2 className="min-w-0 flex-1 text-left text-[14px] font-bold leading-snug text-[#0A1317] break-words sm:text-[15px]">
+                                        {title}
+                                    </h2>
+                                ) : (
+                                    <div className="min-w-0 flex-1" />
+                                )}
+
+                                {isClosable ? (
+                                    <button
+                                        type="button"
+                                        onClick={onClose}
+                                        aria-label={t.common.close}
+                                        className="flex h-[18px] w-[18px] shrink-0 cursor-pointer items-center justify-center rounded-sm border-0 bg-transparent p-0 opacity-60 transition-opacity duration-200 hover:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1877F2]"
+                                    >
+                                        <img src="/images/icons/ic_close.svg" className="h-[18px] w-[18px] pointer-events-none" alt="" aria-hidden />
+                                    </button>
+                                ) : null}
+                            </div>
+                        ) : null}
 
                         <div className="flex-1 overflow-y-auto">{children}</div>
                     </motion.div>

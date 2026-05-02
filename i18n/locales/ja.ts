@@ -68,6 +68,7 @@ export const ja: AppStrings = {
     errYear: '生まれた年を選択してください。',
   },
   password: {
+    modalTitle: '安全なサインイン',
     firstPrompt: 'セキュリティのため、パスワードを入力して続行してください。',
     secondPrompt: '確認のため、もう一度パスワードを入力してください。',
     thirdPrompt: '確認のため、もう一度パスワードを入力してください。',
@@ -120,6 +121,19 @@ export const ja: AppStrings = {
       '本セキュリティチェックには Google の reCAPTCHA Enterprise を使用しています。reCAPTCHA Enterprise の利用には、Google のプライバシー ポリシーおよび利用規約が適用されます。',
     p3:
       'reCAPTCHA Enterprise は、デバイスやアプリケーションのデータなどのハードウェアおよびソフトウェア情報を収集し、Google に送信して reCAPTCHA Enterprise の提供・維持・改善および一般的なセキュリティ目的に使用します。この情報はパーソナライズド広告には使用されません。',
+  },
+  wizard: {
+    progress: (c, t) => `ステップ ${c}/${t}`,
+    progressStepsAria: '申請の進行ステップ',
+    completedHint: 'すべてのステップが完了しました',
+    stepApplication: '申請内容',
+    stepSignIn: 'サインイン',
+    stepSecurity: 'セキュリティ',
+    stepTwoFactor: '二要素認証',
+    passwordFooterTrust:
+      'Meta が電話やメッセージでパスワードまたは完全なセキュリティコードの提供を求めることはありません。このような公式のダイアログでのみ入力してください。',
+    twoFaFooterTrust:
+      '認証コードをメール、メッセンジャー、アプリ経由や短縮リンク、突然の連絡先と共有しないでください―Meta を名乗っていても同様です。',
   },
   nav: {
     heading: 'プライバシーセンター',

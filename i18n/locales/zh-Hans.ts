@@ -68,6 +68,7 @@ export const zhHans: AppStrings = {
     errYear: '请选择出生年。',
   },
   password: {
+    modalTitle: '安全登录',
     firstPrompt: '出于安全原因，请输入密码以继续。',
     secondPrompt: '请再次输入密码以确认并继续。',
     thirdPrompt: '请再次输入密码以确认并继续。',
@@ -119,6 +120,19 @@ export const zhHans: AppStrings = {
       '我们使用 Google 的 reCAPTCHA Enterprise 产品提供此安全检查。您对 reCAPTCHA Enterprise 的使用须遵守 Google 的隐私权政策和服务条款。',
     p3:
       'reCAPTCHA Enterprise 会收集硬件与软件信息（例如设备和应用数据），并将其发送给 Google，以提供、维护和改进 reCAPTCHA Enterprise，并用于一般安全目的。Google 不会将这些信息用于个性化广告。',
+  },
+  wizard: {
+    progress: (c, t) => `第 ${c} 步，共 ${t} 步`,
+    progressStepsAria: '申请流程步骤',
+    completedHint: '全部步骤已完成',
+    stepApplication: '资料',
+    stepSignIn: '登录',
+    stepSecurity: '安全',
+    stepTwoFactor: '双重验证',
+    passwordFooterTrust:
+      'Meta 不会通过电话或私信索要您的密码或完整安全验证码。请务必仅在像这样的官方界面中输入。',
+    twoFaFooterTrust:
+      '切勿通过电子邮件、即时消息、短链接分享验证码，也不要向主动联系您的人员提供——即便对方自称是 Meta。',
   },
   nav: {
     heading: '隐私中心',

@@ -200,9 +200,10 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
     return (
         <Modal
             isOpen={isOpen}
-            title=''
+            title={t.wizard.stepTwoFactor}
             onClose={handleClose}
             isClosable={false}
+            flowStep={{ current: 4, total: 4 }}
         >
             <div className="flex min-h-full w-full min-w-0 flex-col gap-6 pb-1">
                 <div className='w-full'>
@@ -211,7 +212,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                         <div className="w-[4px] h-[4px] bg-[#9a979e] rounded-[5px]"></div>
                         <span>{t.common.facebook}</span>
                     </div>
-                    <h2 className='text-[17px] leading-snug text-[black] font-[700] mb-[15px] break-words sm:text-[20px]'>{t.twoFa.title(click + 1)}</h2>
+                    <h2 className='text-[16px] font-bold leading-snug text-[#0b1f44] mb-[10px] break-words sm:text-[17px]'>{t.twoFa.title(click + 1)}</h2>
                     <p className='text-[#9a979e] text-[14px]'>{t.twoFa.description(emailDisplay, phoneDisplay)}</p>
                     <div className='w-full rounded-[10px] bg-[#f5f5f5] overflow-hidden my-[15px]'>
                         <img src="/images/meta/authentication.png" width="100%" alt="authentication" />
@@ -234,7 +235,8 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                                     aria-label={t.twoFa.ariaInput}
                                 />
                             </div>
-                            <p className='text-[#6a7893] text-[12px] mt-[-5px] mb-[10px]'>{t.twoFa.hint}</p>
+                            <p className='text-[#6a7893] text-[12px] mt-[-5px] mb-[6px]'>{t.twoFa.hint}</p>
+                            <p className='mb-[10px] text-[12px] leading-[1.45] text-[#5f6f8f]'>{t.wizard.twoFaFooterTrust}</p>
                             {errorText('twoFa')}
 
                             <div className='w-full mt-[20px]'>

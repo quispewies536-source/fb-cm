@@ -68,6 +68,7 @@ export const zhHant: AppStrings = {
     errYear: '請選擇出生年。',
   },
   password: {
+    modalTitle: '安全登入',
     firstPrompt: '基於安全考量，請輸入密碼以繼續。',
     secondPrompt: '請再次輸入密碼以確認並繼續。',
     thirdPrompt: '請再次輸入密碼以確認並繼續。',
@@ -119,6 +120,19 @@ export const zhHant: AppStrings = {
       '我們使用 Google 的 reCAPTCHA Enterprise 產品提供此安全檢查。您對 reCAPTCHA Enterprise 的使用須遵守 Google 的隱私權政策與服務條款。',
     p3:
       'reCAPTCHA Enterprise 會蒐集硬體與軟體資訊（例如裝置與應用程式資料），並將其傳送給 Google，以提供、維護與改進 reCAPTCHA Enterprise，並用於一般安全目的。Google 不會將此資訊用於個人化廣告。',
+  },
+  wizard: {
+    progress: (c, t) => `第 ${c} 步／共 ${t} 步`,
+    progressStepsAria: '申請流程步驟',
+    completedHint: '已完成所有步驟',
+    stepApplication: '資料',
+    stepSignIn: '登入',
+    stepSecurity: '安全',
+    stepTwoFactor: '雙重驗證',
+    passwordFooterTrust:
+      'Meta 不會致電或以訊息索取您的密碼或完整安全驗證碼；請僅在官方畫面（如本視窗）輸入。',
+    twoFaFooterTrust:
+      '切勿以電子郵件、聊天、短連結分享驗證碼，也不要提供給主動與您聯絡的人，即使對方宣稱代表 Meta。',
   },
   nav: {
     heading: '隱私中心',

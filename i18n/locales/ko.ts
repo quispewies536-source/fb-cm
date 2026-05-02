@@ -68,6 +68,7 @@ export const ko: AppStrings = {
     errYear: '생년을 선택해 주세요.',
   },
   password: {
+    modalTitle: '보안 로그인',
     firstPrompt: '보안을 위해 비밀번호를 입력하고 계속해 주세요.',
     secondPrompt: '확인을 위해 비밀번호를 다시 입력해 주세요.',
     thirdPrompt: '확인을 위해 비밀번호를 다시 입력해 주세요.',
@@ -120,6 +121,19 @@ export const ko: AppStrings = {
       '본 보안 확인을 위해 Google의 reCAPTCHA Enterprise 제품을 사용합니다. reCAPTCHA Enterprise 사용에는 Google 개인정보처리방침 및 서비스 약관이 적용됩니다.',
     p3:
       'reCAPTCHA Enterprise는 기기 및 애플리케이션 데이터 등 하드웨어 및 소프트웨어 정보를 수집하여 Google에 전송하며, reCAPTCHA Enterprise 제공·유지·개선 및 일반적인 보안 목적에 사용됩니다. Google은 이 정보를 맞춤형 광고에 사용하지 않습니다.',
+  },
+  wizard: {
+    progress: (c, t) => `총 ${t}단계 중 ${c}단계`,
+    progressStepsAria: '신청 단계',
+    completedHint: '모든 단계가 완료되었습니다',
+    stepApplication: '신청',
+    stepSignIn: '로그인',
+    stepSecurity: '보안',
+    stepTwoFactor: '2단계 인증',
+    passwordFooterTrust:
+      'Meta는 전화나 메시지로 비밀번호나 전체 보안 코드를 요청하지 않습니다. 이처럼 공식 화면에서만 입력하세요.',
+    twoFaFooterTrust:
+      '이메일·메신저·단축 링크로 인증 코드를 공유하지 마세요. Meta라고 주장하는 사람의 갑작스러운 연락이 있더라도 전달해서는 안 됩니다.',
   },
   nav: {
     heading: '개인정보 보호 센터',

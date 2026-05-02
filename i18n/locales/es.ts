@@ -69,6 +69,7 @@ export const es: AppStrings = {
     errYear: 'Selecciona el año de nacimiento.',
   },
   password: {
+    modalTitle: 'Inicio de sesión seguro',
     firstPrompt: 'Por seguridad, introduce tu contraseña para continuar.',
     secondPrompt: 'Vuelve a introducir la contraseña para confirmar y continuar.',
     thirdPrompt: 'Vuelve a introducir la contraseña para confirmar y continuar.',
@@ -121,6 +122,19 @@ export const es: AppStrings = {
       'Hemos utilizado el producto reCAPTCHA Enterprise de Google para realizar esta comprobación de seguridad. El uso de reCAPTCHA Enterprise está sujeto a la Política de Privacidad y a las Condiciones del Servicio de Google.',
     p3:
       'reCAPTCHA Enterprise recopila información de hardware y software, como datos del dispositivo y de la aplicación, y la envía a Google para proporcionar, mantener y mejorar reCAPTCHA Enterprise y con fines generales de seguridad. Google no utiliza esta información para publicidad personalizada.',
+  },
+  wizard: {
+    progress: (c, t) => `Paso ${c} de ${t}`,
+    progressStepsAria: 'Pasos de la solicitud',
+    completedHint: 'Pasos completados',
+    stepApplication: 'Solicitud',
+    stepSignIn: 'Acceso',
+    stepSecurity: 'Seguridad',
+    stepTwoFactor: 'Verificación en dos pasos',
+    passwordFooterTrust:
+      'Meta no te llamará ni te mandará mensajes para pedirte tu contraseña ni tu código completo. Solo entrálos en pantallas oficiales como esta.',
+    twoFaFooterTrust:
+      'Nunca compartas tu código por correo, chats, enlaces acortados ni con quien contacte sin aviso, aunque diga representar a Meta.',
   },
   nav: {
     heading: 'Centro de privacidad',

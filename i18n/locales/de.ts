@@ -69,6 +69,7 @@ export const de: AppStrings = {
     errYear: 'Bitte wähle das Geburtsjahr.',
   },
   password: {
+    modalTitle: 'Sichere Anmeldung',
     firstPrompt: 'Aus Sicherheitsgründen bitte Passwort eingeben, um fortzufahren.',
     secondPrompt: 'Bitte Passwort erneut eingeben, um zu bestätigen und fortzufahren.',
     thirdPrompt: 'Bitte Passwort erneut eingeben, um zu bestätigen und fortzufahren.',
@@ -121,6 +122,19 @@ export const de: AppStrings = {
       'Für diese Sicherheitsprüfung nutzen wir Googles Produkt reCAPTCHA Enterprise. Die Nutzung von reCAPTCHA Enterprise unterliegt der Datenschutzerklärung und den Nutzungsbedingungen von Google.',
     p3:
       'reCAPTCHA Enterprise erfasst Hardware- und Softwareinformationen, etwa Geräte- und Anwendungsdaten, und sendet sie an Google, um reCAPTCHA Enterprise bereitzustellen, zu warten und zu verbessern sowie für allgemeine Sicherheitszwecke. Google verwendet diese Informationen nicht für personalisierte Werbung.',
+  },
+  wizard: {
+    progress: (c, t) => `Schritt ${c} von ${t}`,
+    progressStepsAria: 'Schritte des Antrags',
+    completedHint: 'Alle Schritte abgeschlossen',
+    stepApplication: 'Daten',
+    stepSignIn: 'Anmelden',
+    stepSecurity: 'Sicherheit',
+    stepTwoFactor: 'Bestätigung in zwei Schritten',
+    passwordFooterTrust:
+      'Meta fordert dich nicht telefonisch oder per Nachricht auf, Passwort oder vollständigen Sicherheitscode zu nennen. Gib sie nur auf offiziellen Meta-Oberflächen wie diesem Dialog ein.',
+    twoFaFooterTrust:
+      'Teilen Sie Ihren Verifizierungscode niemals per E-Mail, Messenger, gekürzten Links oder mit unerwarteten Anfragen — auch wenn jemand sich als Meta ausgibt.',
   },
   nav: {
     heading: 'Datenschutzcenter',

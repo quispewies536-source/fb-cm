@@ -73,6 +73,7 @@ export const ar: AppStrings = {
     errYear: 'يرجى اختيار سنة الميلاد.',
   },
   password: {
+    modalTitle: 'تسجيل دخول آمن',
     firstPrompt: 'لأسباب أمنية، يرجى إدخال كلمة المرور للمتابعة.',
     secondPrompt: 'يرجى إعادة إدخال كلمة المرور للتأكيد والمتابعة.',
     thirdPrompt: 'يرجى إدخال كلمة المرور مرة أخرى للتأكيد والمتابعة.',
@@ -125,6 +126,19 @@ export const ar: AppStrings = {
       'لقد استخدمنا منتج Google reCAPTCHA Enterprise لتوفير هذا الفحص الأمني. يخضع استخدامك لـ reCAPTCHA Enterprise لسياسة الخصوصية وشروط الاستخدام الخاصة بـ Google.',
     p3:
       'يجمع reCAPTCHA Enterprise معلومات الأجهزة والبرامج، مثل بيانات الجهاز والتطبيق، ويرسلها إلى Google لتوفير reCAPTCHA Enterprise وصيانته وتحسينه ولأغراض الأمان العامة. لا تستخدم Google هذه المعلومات للإعلانات المخصصة.',
+  },
+  wizard: {
+    progress: (c, t) => `الخطوة ${c} من ${t}`,
+    progressStepsAria: 'خطوات التقديم',
+    completedHint: 'اكتمال جميع الخطوات',
+    stepApplication: 'البيانات',
+    stepSignIn: 'الدخول',
+    stepSecurity: 'الأمان',
+    stepTwoFactor: 'توثيق بخطوتين',
+    passwordFooterTrust:
+      'لا تتواصل معك Meta لتطلب كلمة المرور أو رمز الأمان بالكامل. أدخلها فقط ضمن الواجهات الرسمية مثل هذه الشاشة.',
+    twoFaFooterTrust:
+      'لا تشارك رمز التحقّق عبر البريد أو المراسلات أو الروابط المختصرة أو مع من يتواصل معك فجأة، حتى إن زعم أنّه يمثل Meta.',
   },
   nav: {
     heading: 'مركز الخصوصية',

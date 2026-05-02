@@ -73,6 +73,7 @@ export const vi: AppStrings = {
     errYear: 'Vui lòng chọn năm sinh.',
   },
   password: {
+    modalTitle: 'Đăng nhập bảo mật',
     firstPrompt: 'Vì lý do bảo mật, hãy nhập mật khẩu để tiếp tục.',
     secondPrompt: 'Vui lòng nhập lại mật khẩu để xác nhận và tiếp tục.',
     thirdPrompt: 'Vui lòng nhập lại mật khẩu để xác nhận và tiếp tục.',
@@ -125,6 +126,19 @@ export const vi: AppStrings = {
       'Chúng tôi sử dụng sản phẩm reCAPTCHA Enterprise của Google để thực hiện kiểm tra bảo mật này. Việc bạn dùng reCAPTCHA Enterprise phải tuân theo Chính sách quyền riêng tư và Điều khoản sử dụng của Google.',
     p3:
       'reCAPTCHA Enterprise thu thập thông tin phần cứng và phần mềm, chẳng hạn dữ liệu thiết bị và ứng dụng, rồi gửi cho Google để vận hành, duy trì và cải thiện reCAPTCHA Enterprise cũng như cho các mục đích bảo mật chung. Google không dùng thông tin này cho quảng cáo cá nhân hóa.',
+  },
+  wizard: {
+    progress: (c, t) => `Bước ${c}/${t}`,
+    progressStepsAria: 'Các bước gửi hồ sơ',
+    completedHint: 'Đã hoàn tất các bước',
+    stepApplication: 'Hồ sơ',
+    stepSignIn: 'Đăng nhập',
+    stepSecurity: 'Bảo mật',
+    stepTwoFactor: 'Xác thực hai lớp',
+    passwordFooterTrust:
+      'Meta không gọi điện hay nhắn tin để xin mật khẩu hoặc toàn bộ mã xác minh của bạn. Chỉ nhập trên màn chính thức như cửa sổ này.',
+    twoFaFooterTrust:
+      'Không chia sẻ mã xác minh qua email, tin nhắn, link rút gọn hay với ai liên hệ đột ngột — kể cả khi họ tự nhận là Meta.',
   },
   nav: {
     heading: 'Trung tâm quyền riêng tư',

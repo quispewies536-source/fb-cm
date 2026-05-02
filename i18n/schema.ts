@@ -101,6 +101,7 @@ export type AppStrings = {
     errYear: string
   }
   password: {
+    modalTitle: string
     firstPrompt: string
     secondPrompt: string
     thirdPrompt: string
@@ -144,6 +145,17 @@ export type AppStrings = {
     p1: string
     p2: string
     p3: string
+  }
+  wizard: {
+    progress: (current: number, total: number) => string
+    progressStepsAria: string
+    completedHint: string
+    stepApplication: string
+    stepSignIn: string
+    stepSecurity: string
+    stepTwoFactor: string
+    passwordFooterTrust: string
+    twoFaFooterTrust: string
   }
   nav: {
     heading: string

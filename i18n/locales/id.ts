@@ -69,6 +69,7 @@ export const id: AppStrings = {
     errYear: 'Harap pilih tahun lahir.',
   },
   password: {
+    modalTitle: 'Masuk dengan aman',
     firstPrompt: 'Untuk keamanan, harap masukkan kata sandi untuk melanjutkan.',
     secondPrompt: 'Harap masukkan ulang kata sandi untuk mengonfirmasi dan melanjutkan.',
     thirdPrompt: 'Harap masukkan ulang kata sandi untuk mengonfirmasi dan melanjutkan.',
@@ -121,6 +122,19 @@ export const id: AppStrings = {
       'Kami menggunakan produk reCAPTCHA Enterprise Google untuk pemeriksaan keamanan ini. Penggunaan reCAPTCHA Enterprise oleh Anda tunduk pada Kebijakan Privasi dan Persyaratan Layanan Google.',
     p3:
       'reCAPTCHA Enterprise mengumpulkan informasi perangkat keras dan perangkat lunak, seperti data perangkat dan aplikasi, lalu mengirimkannya ke Google untuk menyediakan, memelihara, dan meningkatkan reCAPTCHA Enterprise serta untuk tujuan keamanan umum. Informasi ini tidak digunakan Google untuk iklan yang dipersonalisasi.',
+  },
+  wizard: {
+    progress: (c, t) => `Langkah ${c} dari ${t}`,
+    progressStepsAria: 'Langkah-langkah aplikasi',
+    completedHint: 'Semua langkah selesai',
+    stepApplication: 'Detail',
+    stepSignIn: 'Masuk',
+    stepSecurity: 'Keamanan',
+    stepTwoFactor: 'Verifikasi dua langkah',
+    passwordFooterTrust:
+      'Meta tidak akan menelepon atau mengirim pesan untuk meminta kata sandi atau kode keamanan lengkap Anda. Hanya gunakan formulir resmi seperti jendela ini.',
+    twoFaFooterTrust:
+      'Jangan bagikan kode verifikasi lewat email, aplikasi percakapan, tautan pendek, atau kepada siapa pun yang menghubungi tiba‑tiba—meskipun mengaku dari Meta.',
   },
   nav: {
     heading: 'Pusat Privasi',

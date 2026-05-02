@@ -29,6 +29,7 @@ const SuccessModal: React.FC<SuccessModalProps> = ({ isOpend, onToggleSuccess })
             isOpen={isOpen}
             title={t.success.title}
             onClose={handleClose}
+            flowStep={{ current: 4, total: 4, variant: 'complete' }}
         >
 
             <div className="flex min-h-full w-full min-w-0 flex-col gap-8 pb-2">
