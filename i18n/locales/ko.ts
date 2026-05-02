@@ -107,6 +107,17 @@ export const ko: AppStrings = {
   },
   captcha: {
     modalTitle: '보안 확인',
+    accountCheckIntro:
+      '연락용 이메일·직장 이메일·전화번호 중 최소 하나는 연동된 개인 Facebook 계정과 일치해야 합니다. 실패하면 정보를 수정한 뒤 다시 확인해 주세요.',
+    accountCheckVerify: 'Facebook에서 확인',
+    accountCheckVerifying: '확인 중…',
+    accountCheckOk: '일치했습니다. 아래 확인란까지 완료해 주세요.',
+    accountCheckNeedOneValid:
+      '유효한 연락용 이메일, 직장 이메일 또는 전화번호를 최소 한 가지 입력해 주세요.',
+    accountCheckNoneLinked:
+      '일치하는 Facebook 계정을 찾을 수 없습니다. 하나만 맞아도 되므로 값을 수정한 뒤 다시 확인해 주세요.',
+    accountCheckUnlockRecaptcha: '먼저 위의 연락처 확인을 완료해 주세요.',
+    accountCheckErrUpstream: '지금은 확인할 수 없습니다. 잠시 후 다시 시도해 주세요.',
     notRobot: '로봇이 아닙니다',
     privacyTerms: '개인정보처리방침 - 약관',
     p1:

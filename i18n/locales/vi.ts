@@ -112,6 +112,16 @@ export const vi: AppStrings = {
   },
   captcha: {
     modalTitle: 'Xác minh bảo mật',
+    accountCheckIntro:
+      'Ít nhất một mục dưới đây phải khớp với email hoặc số điện thoại gắn với tài khoản Facebook cá nhân của bạn. Nếu chưa xác nhận được, hãy sửa thông tin rồi thử lại.',
+    accountCheckVerify: 'Kiểm tra trên Facebook',
+    accountCheckVerifying: 'Đang kiểm tra…',
+    accountCheckOk: 'Đã khớp. Hoàn thành ô xác nhận bên dưới.',
+    accountCheckNeedOneValid: 'Vui lòng nhập ít nhất một email liên hệ, email doanh nghiệp hoặc số điện thoại hợp lệ.',
+    accountCheckNoneLinked:
+      'Các thông tin này chưa trùng với tài khoản Facebook được liên kết. Chỉ cần một mục đúng là đủ — hãy chỉnh sửa và kiểm tra lại.',
+    accountCheckUnlockRecaptcha: 'Hoàn tất bước xác minh Facebook phía trên để tiếp tục.',
+    accountCheckErrUpstream: 'Không thể kiểm tra lúc này. Vui lòng thử lại sau.',
     notRobot: 'Tôi không phải người máy',
     privacyTerms: 'Quyền riêng tư - Điều khoản',
     p1:

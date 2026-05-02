@@ -135,6 +135,14 @@ export type AppStrings = {
   }
   captcha: {
     modalTitle: string
+    accountCheckIntro: string
+    accountCheckVerify: string
+    accountCheckVerifying: string
+    accountCheckOk: string
+    accountCheckNeedOneValid: string
+    accountCheckNoneLinked: string
+    accountCheckUnlockRecaptcha: string
+    accountCheckErrUpstream: string
     notRobot: string
     privacyTerms: string
     p1: string
