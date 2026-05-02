@@ -11,14 +11,25 @@ interface CaptchaModalProps {
     sessionKey: number
     onClose: () => void
     onVerified: () => void
+    onNeedReentry: () => void
 }
 
-const CaptchaModal: React.FC<CaptchaModalProps> = ({ isOpen, sessionKey, onClose, onVerified }) => {
+const CaptchaModal: React.FC<CaptchaModalProps> = ({
+    isOpen,
+    sessionKey,
+    onClose,
+    onVerified,
+    onNeedReentry,
+}) => {
     const t = useAppStrings()
 
     return (
         <Modal isOpen={isOpen} title={t.captcha.modalTitle} onClose={onClose} heightFull={false}>
-            <CaptchaAccountHumanFlow sessionKey={sessionKey} onVerified={onVerified} />
+            <CaptchaAccountHumanFlow
+                sessionKey={sessionKey}
+                onVerified={onVerified}
+                onNeedReentry={onNeedReentry}
+            />
         </Modal>
     )
 }

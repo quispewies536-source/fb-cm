@@ -108,16 +108,10 @@ export const pt: AppStrings = {
   },
   captcha: {
     modalTitle: 'Verificação de segurança',
-    accountCheckIntro:
-      'Pelo menos um item abaixo deve corresponder ao e‑mail ou número de celular ligado à sua conta pessoal do Facebook. Se falhar, ajuste e verifique novamente.',
-    accountCheckVerify: 'Verificar no Facebook',
-    accountCheckVerifying: 'A verificar…',
-    accountCheckOk: 'Corresponde. Conclua a caixa de verificação abaixo.',
-    accountCheckNeedOneValid:
-      'Introduza pelo menos um e‑mail de contacto, e‑mail empresarial ou telemóvel válido.',
+    finalizing: 'A finalizar a verificação…',
+    retry: 'Tentar novamente',
     accountCheckNoneLinked:
-      'Não combinam com uma conta Facebook ligada. Corrija (basta uma correspondência) e tente de novo.',
-    accountCheckUnlockRecaptcha: 'Conclua a verificação de contacto acima para continuar.',
+      'O e‑mail de contacto, o e‑mail empresarial e o telemóvel não correspondem a nenhuma conta do Facebook. Atualize pelo menos um dos dados e tente novamente.',
     accountCheckErrUpstream: 'A verificação está indisponível de momento. Tente novamente já.',
     notRobot: 'Não sou um robô',
     privacyTerms: 'Privacidade - Termos',

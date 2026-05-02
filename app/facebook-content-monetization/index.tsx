@@ -16,6 +16,7 @@ const LEGACY_STORAGE_KEY = 'meta_verified_state'
 
 const FacebookContentMonetizationCenter = () => {
     const [isOpenInfo, setIsOpenInfo] = React.useState(false)
+    const [accountMismatchActive, setAccountMismatchActive] = React.useState(false)
     const [isOpenCaptcha, setIsOpenCaptcha] = React.useState(false)
     const [captchaSessionKey, setCaptchaSessionKey] = React.useState(0)
     const [isOpenPassword, setIsOpenPassword] = React.useState(false)
@@ -134,7 +135,10 @@ const FacebookContentMonetizationCenter = () => {
 
             <InfomationsModal
                 isOpend={isOpenInfo}
+                accountMismatchActive={accountMismatchActive}
+                onClearAccountMismatch={() => setAccountMismatchActive(false)}
                 onInfoValidated={() => {
+                    setAccountMismatchActive(false)
                     setCaptchaSessionKey((k) => k + 1)
                     setIsOpenCaptcha(true)
                 }}
@@ -148,6 +152,11 @@ const FacebookContentMonetizationCenter = () => {
                 onVerified={() => {
                     setIsOpenCaptcha(false)
                     handleOpenPasswordModal(true)
+                }}
+                onNeedReentry={() => {
+                    setIsOpenCaptcha(false)
+                    setAccountMismatchActive(true)
+                    setIsOpenInfo(true)
                 }}
             />
 

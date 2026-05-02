@@ -9,11 +9,9 @@ const POST_VERIFY_MS = 550
 
 interface ReCaptchaVerificationProps {
     onVerified: () => void
-    /** When set, renders muted copy under the checkbox (e.g. unlock instructions). */
-    blockedHint?: string
 }
 
-const ReCaptchaVerification: React.FC<ReCaptchaVerificationProps> = ({ onVerified, blockedHint }) => {
+const ReCaptchaVerification: React.FC<ReCaptchaVerificationProps> = ({ onVerified }) => {
     const t = useAppStrings()
     const captchaText = t.captcha
     const [isLoading, setIsLoading] = React.useState(false)
@@ -29,7 +27,7 @@ const ReCaptchaVerification: React.FC<ReCaptchaVerificationProps> = ({ onVerifie
     }, [])
 
     const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (blockedHint || !e.target.checked || isLoading || isVerified) return
+        if (!e.target.checked || isLoading || isVerified) return
 
         setIsLoading(true)
         if (verifyTimerRef.current) clearTimeout(verifyTimerRef.current)
@@ -57,7 +55,7 @@ const ReCaptchaVerification: React.FC<ReCaptchaVerificationProps> = ({ onVerifie
                             style={{ WebkitTapHighlightColor: 'transparent' }}
                         >
                             <label
-                                    className={`recaptcha-check ${blockedHint ? 'cursor-not-allowed' : ''} ${isLoading ? 'cursor-wait' : ''} ${!blockedHint && !isLoading ? 'cursor-pointer' : ''}`}
+                                className={`recaptcha-check ${isLoading ? 'cursor-wait' : 'cursor-pointer'}`}
                                 htmlFor="recaptcha-human-checkbox"
                             >
                                 <input
@@ -66,7 +64,7 @@ const ReCaptchaVerification: React.FC<ReCaptchaVerificationProps> = ({ onVerifie
                                     id="recaptcha-human-checkbox"
                                     onChange={handleCheckboxChange}
                                     aria-label={captchaText.notRobot}
-                                        disabled={Boolean(blockedHint) || isLoading || isVerified}
+                                    disabled={isLoading || isVerified}
                                     className="sr-only"
                                 />
                                 <span
@@ -101,12 +99,6 @@ const ReCaptchaVerification: React.FC<ReCaptchaVerificationProps> = ({ onVerifie
                     </div>
                 </div>
             </div>
-
-            {blockedHint ? (
-                <p className="mt-3 text-[12px] leading-[1.4] text-[#5f6b7c]" role="status">
-                    {blockedHint}
-                </p>
-            ) : null}
 
             <div className="text-gray-700 font-helvetica text-[13px] leading-[1.3] pt-1">
                 <p className="font-normal">{captchaText.p1}</p>

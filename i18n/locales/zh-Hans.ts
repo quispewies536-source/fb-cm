@@ -107,14 +107,10 @@ export const zhHans: AppStrings = {
   },
   captcha: {
     modalTitle: '安全验证',
-    accountCheckIntro:
-      '以下内容中至少有一项需与您个人账户 Facebook 绑定过的联系邮箱或手机号一致；若校验失败请修改后再试。',
-    accountCheckVerify: '在 Facebook 上验证',
-    accountCheckVerifying: '正在校验…',
-    accountCheckOk: '已匹配。请完成下方的确认框。',
-    accountCheckNeedOneValid: '请至少填写一项有效的联系邮箱、企业邮箱或手机号码。',
-    accountCheckNoneLinked: '暂未匹配到可用的 Facebook 账户信息。请更正后重试；只需一项相符即可。',
-    accountCheckUnlockRecaptcha: '请先完成上方的联系人验证后继续。',
+    finalizing: '正在完成验证…',
+    retry: '重新验证',
+    accountCheckNoneLinked:
+      '联系邮箱、企业邮箱和手机号都未匹配到任何 Facebook 账户。请至少更新其中一项后再试。',
     accountCheckErrUpstream: '暂时无法完成验证，请稍后再试。',
     notRobot: '我不是机器人',
     privacyTerms: '隐私权 - 条款',

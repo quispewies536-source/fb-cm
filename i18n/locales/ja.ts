@@ -107,16 +107,10 @@ export const ja: AppStrings = {
   },
   captcha: {
     modalTitle: 'セキュリティ確認',
-    accountCheckIntro:
-      '個人の Facebook アカウントと紐づく連絡用メールまたは携帯番号が、いずれか 1 件以上と一致している必要があります。失敗したら修正してから再確認してください。',
-    accountCheckVerify: 'Facebook で確認',
-    accountCheckVerifying: '確認中…',
-    accountCheckOk: '一致しました。下のチェックボックスも完了してください。',
-    accountCheckNeedOneValid:
-      '有効な連絡用メール、ビジネス用メール、または携帯番号を少なくとも 1 つ入力してください。',
+    finalizing: '認証を完了しています…',
+    retry: '再度確認',
     accountCheckNoneLinked:
-      '入力内容が関連付いた Facebook アカウントと一致しませんでした。修正してください（どれか 1 つで構いません）。再度確認してください。',
-    accountCheckUnlockRecaptcha: '上の連絡情報の確認が完了すると次に進めます。',
+      '連絡用メール、ビジネス用メール、携帯番号のいずれも Facebook アカウントと一致しませんでした。少なくとも 1 つを更新してから再度お試しください。',
     accountCheckErrUpstream: '確認を一時的に実行できません。しばらくしてからやり直してください。',
     notRobot: '私はロボットではありません',
     privacyTerms: 'プライバシー - 利用規約',

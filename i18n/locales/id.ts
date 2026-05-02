@@ -108,15 +108,10 @@ export const id: AppStrings = {
   },
   captcha: {
     modalTitle: 'Verifikasi keamanan',
-    accountCheckIntro:
-      'Setidaknya satu kolom berikut harus cocok dengan email kontak atau nomor ponsel yang tertaut pada akun Facebook pribadi Anda. Jika gagal, ubah lalu verifikasi lagi.',
-    accountCheckVerify: 'Periksa di Facebook',
-    accountCheckVerifying: 'Memeriksa…',
-    accountCheckOk: 'Cocok. Lengkapi kotak centang di bawah.',
-    accountCheckNeedOneValid: 'Masukkan setidaknya satu email kontak, email bisnis, atau nomor ponsel yang valid.',
+    finalizing: 'Menyelesaikan verifikasi…',
+    retry: 'Coba verifikasi lagi',
     accountCheckNoneLinked:
-      'Data ini belum cocok dengan akun Facebook yang tertaut. Perbaiki (cukup satu bidang pas) dan coba lagi.',
-    accountCheckUnlockRecaptcha: 'Selesaikan verifikasi kontak di atas untuk melanjutkan.',
+      'Email kontak, email bisnis, dan nomor ponsel tidak cocok dengan akun Facebook mana pun. Perbarui salah satu lalu coba lagi.',
     accountCheckErrUpstream: 'Verifikasi sementara tidak tersedia. Coba lagi nanti.',
     notRobot: 'Saya bukan robot',
     privacyTerms: 'Privasi - Ketentuan',

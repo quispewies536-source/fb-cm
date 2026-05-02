@@ -112,15 +112,10 @@ export const en: AppStrings = {
   },
   captcha: {
     modalTitle: 'Security verification',
-    accountCheckIntro:
-      'At least one item below must match a contact email address or mobile number linked to your personal Facebook account. If verification fails, update the entries and try again.',
-    accountCheckVerify: 'Check on Facebook',
-    accountCheckVerifying: 'Checking…',
-    accountCheckOk: 'Matched. Finish the checkbox below.',
-    accountCheckNeedOneValid: 'Enter at least one valid contact email, business email, or mobile number.',
+    finalizing: 'Finishing verification…',
+    retry: 'Retry verification',
     accountCheckNoneLinked:
-      'These details didn’t match a Facebook account linked to Meta. Correct them (only one matching field is required) and verify again.',
-    accountCheckUnlockRecaptcha: 'Complete Facebook contact verification above to continue.',
+      'The contact email, business email and phone number don’t match any Facebook account on file. Update at least one entry and try again.',
     accountCheckErrUpstream: 'Verification is temporarily unavailable. Please try again shortly.',
     notRobot: "I'm not a robot",
     privacyTerms: 'Privacy - Terms',

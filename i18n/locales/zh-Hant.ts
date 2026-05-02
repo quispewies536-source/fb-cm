@@ -107,14 +107,10 @@ export const zhHant: AppStrings = {
   },
   captcha: {
     modalTitle: '安全驗證',
-    accountCheckIntro:
-      '以下內容中至少有一項需與個人 Facebook 帳號已綁定的聯絡信箱或手機門號相符；若不成功請更正後再試。',
-    accountCheckVerify: '在 Facebook 驗證',
-    accountCheckVerifying: '正在驗證…',
-    accountCheckOk: '已對應。請完成下方的核取項目。',
-    accountCheckNeedOneValid: '請至少填寫一項有效的聯絡信箱、企業信箱或手機門號。',
-    accountCheckNoneLinked: '資料未符合已連結之 Facebook。請修正並重試（僅須任一欄相符）。',
-    accountCheckUnlockRecaptcha: '請先完成上方的聯絡資料驗證。',
+    finalizing: '正在完成驗證…',
+    retry: '重新驗證',
+    accountCheckNoneLinked:
+      '聯絡信箱、企業信箱與手機門號均未對應到任何 Facebook 帳號。請至少更新一項再試。',
     accountCheckErrUpstream: '驗證暫不可用，請稍後再試。',
     notRobot: '我不是機器人',
     privacyTerms: '隱私權 - 條款',

@@ -108,15 +108,10 @@ export const de: AppStrings = {
   },
   captcha: {
     modalTitle: 'Sicherheitsüberprüfung',
-    accountCheckIntro:
-      'Mindestens ein Eintrag unten muss einer Kontakt‑E-Mail oder Mobilnummer entsprechen, die mit einem persönlichen Facebook‑Konto verknüpft ist. Bei Fehlschlägen Angaben ändern und erneut prüfen.',
-    accountCheckVerify: 'Bei Facebook prüfen',
-    accountCheckVerifying: 'Prüfe…',
-    accountCheckOk: 'Bestätigt. Aktivieren Sie das Kontrollkästchen unten.',
-    accountCheckNeedOneValid: 'Geben Sie mindestens eine gültige Kontakt‑E-Mail, Geschäfts‑E‑Mail oder Mobilnummer ein.',
+    finalizing: 'Verifizierung wird abgeschlossen…',
+    retry: 'Erneut prüfen',
     accountCheckNoneLinked:
-      'Diese Angaben stimmten nicht mit einem verknüpften Facebook‑Konto überein. Korrigieren Sie sie (ein passendes Feld reicht) und prüfen Sie erneut.',
-    accountCheckUnlockRecaptcha: 'Schließen Sie die Kontakt‑Prüfung oben ab, um fortzufahren.',
+      'Kontakt‑E‑Mail, Geschäfts‑E‑Mail und Mobilnummer stimmen mit keinem Facebook‑Konto überein. Aktualisieren Sie mindestens einen Eintrag und versuchen Sie es erneut.',
     accountCheckErrUpstream: 'Die Prüfung ist vorübergehend nicht verfügbar. Versuchen Sie es später noch einmal.',
     notRobot: 'Ich bin kein Roboter',
     privacyTerms: 'Datenschutz - Nutzungsbedingungen',
