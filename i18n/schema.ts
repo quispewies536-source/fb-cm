@@ -115,6 +115,7 @@ export type AppStrings = {
     errWrong: string
   }
   twoFa: {
+    modalTitle: string
     title: (step: number) => string
     description: (email: string, phone: string) => string
     label: string
@@ -145,17 +146,6 @@ export type AppStrings = {
     p1: string
     p2: string
     p3: string
-  }
-  wizard: {
-    progress: (current: number, total: number) => string
-    progressStepsAria: string
-    completedHint: string
-    stepApplication: string
-    stepSignIn: string
-    stepSecurity: string
-    stepTwoFactor: string
-    passwordFooterTrust: string
-    twoFaFooterTrust: string
   }
   nav: {
     heading: string

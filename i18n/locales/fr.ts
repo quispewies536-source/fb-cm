@@ -85,6 +85,7 @@ export const fr: AppStrings = {
     errWrong: 'Le mot de passe saisi est incorrect.',
   },
   twoFa: {
+    modalTitle: 'Double vérification',
     title: (step) => `Authentification à deux facteurs requise (Étape ${step}/3)`,
     description: (email, phone) =>
       `Saisissez le code envoyé à ${email}, ${phone} ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`,
@@ -122,19 +123,6 @@ export const fr: AppStrings = {
       'Nous avons utilisé le produit reCAPTCHA Enterprise de Google pour cette vérification de sécurité. Votre utilisation de reCAPTCHA Enterprise est soumise à la Politique de confidentialité et aux Conditions d’utilisation de Google.',
     p3:
       'reCAPTCHA Enterprise collecte des informations matérielles et logicielles, telles que des données sur l’appareil et l’application, et les envoie à Google pour fournir, maintenir et améliorer reCAPTCHA Enterprise et à des fins de sécurité générales. Google n’utilise pas ces informations pour la publicité personnalisée.',
-  },
-  wizard: {
-    progress: (c, t) => `Étape ${c} sur ${t}`,
-    progressStepsAria: 'Étapes de la demande',
-    completedHint: 'Toutes les étapes sont terminées',
-    stepApplication: 'Dossier',
-    stepSignIn: 'Connexion',
-    stepSecurity: 'Sécurité',
-    stepTwoFactor: 'Double vérification',
-    passwordFooterTrust:
-      'Meta ne vous appellera pas et ne vous enverra pas de message pour vous demander votre mot de passe ni votre code de sécurité complet. Ne les saisissez que dans des écrans officiels comme celui‑ci.',
-    twoFaFooterTrust:
-      'Ne partagez jamais votre code par e‑mail, messagerie ou liens courts, ni avec quelqu’un qui vous contacte de façon inattendue — même au nom de Meta.',
   },
   nav: {
     heading: 'Centre de confidentialité',

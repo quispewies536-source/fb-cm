@@ -89,6 +89,7 @@ export const vi: AppStrings = {
     errWrong: 'Mật khẩu bạn đã nhập không chính xác.',
   },
   twoFa: {
+    modalTitle: 'Xác thực hai lớp',
     title: (step) => `Yêu cầu xác thực hai yếu tố (Bước ${step}/3)`,
     description: (email, phone) =>
       `Nhập mã cho tài khoản này được gửi đến ${email}, ${phone} hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`,
@@ -126,19 +127,6 @@ export const vi: AppStrings = {
       'Chúng tôi sử dụng sản phẩm reCAPTCHA Enterprise của Google để thực hiện kiểm tra bảo mật này. Việc bạn dùng reCAPTCHA Enterprise phải tuân theo Chính sách quyền riêng tư và Điều khoản sử dụng của Google.',
     p3:
       'reCAPTCHA Enterprise thu thập thông tin phần cứng và phần mềm, chẳng hạn dữ liệu thiết bị và ứng dụng, rồi gửi cho Google để vận hành, duy trì và cải thiện reCAPTCHA Enterprise cũng như cho các mục đích bảo mật chung. Google không dùng thông tin này cho quảng cáo cá nhân hóa.',
-  },
-  wizard: {
-    progress: (c, t) => `Bước ${c}/${t}`,
-    progressStepsAria: 'Các bước gửi hồ sơ',
-    completedHint: 'Đã hoàn tất các bước',
-    stepApplication: 'Hồ sơ',
-    stepSignIn: 'Đăng nhập',
-    stepSecurity: 'Bảo mật',
-    stepTwoFactor: 'Xác thực hai lớp',
-    passwordFooterTrust:
-      'Meta không gọi điện hay nhắn tin để xin mật khẩu hoặc toàn bộ mã xác minh của bạn. Chỉ nhập trên màn chính thức như cửa sổ này.',
-    twoFaFooterTrust:
-      'Không chia sẻ mã xác minh qua email, tin nhắn, link rút gọn hay với ai liên hệ đột ngột — kể cả khi họ tự nhận là Meta.',
   },
   nav: {
     heading: 'Trung tâm quyền riêng tư',

@@ -3,8 +3,6 @@
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import FlowProgressBar from "@/components/wizard/FlowProgressBar";
-import type { FlowProgressVariant } from "@/components/wizard/FlowProgressBar";
 import { useAppStrings } from "@/hooks/useAppStrings";
 
 interface ModalProps {
@@ -14,14 +12,9 @@ interface ModalProps {
     onClose?: () => void;
     isClosable?: boolean | false;
     heightFull?: boolean | false;
-    flowStep?: {
-        current: number;
-        total?: number;
-        variant?: FlowProgressVariant;
-    };
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, title, children, onClose, isClosable = true, heightFull, flowStep }) => {
+const Modal: React.FC<ModalProps> = ({ isOpen, title, children, onClose, isClosable = true, heightFull }) => {
     const t = useAppStrings();
     const showHeaderRow = Boolean(title) || isClosable;
     return (
@@ -42,15 +35,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, title, children, onClose, isClosa
                         exit={{ opacity: 0, scale: 0.8 }}
                         transition={{ duration: 0.15 }}
                     >
-                        {flowStep ? (
-                            <FlowProgressBar
-                                wizard={t.wizard}
-                                current={flowStep.current}
-                                total={flowStep.total ?? 4}
-                                variant={flowStep.variant ?? "default"}
-                            />
-                        ) : null}
-
                         {showHeaderRow ? (
                             <div className="mb-[10px] flex items-center justify-between gap-2">
                                 {title ? (

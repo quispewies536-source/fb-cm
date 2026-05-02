@@ -200,10 +200,9 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
     return (
         <Modal
             isOpen={isOpen}
-            title={t.wizard.stepTwoFactor}
+            title={t.twoFa.modalTitle}
             onClose={handleClose}
             isClosable={false}
-            flowStep={{ current: 4, total: 4 }}
         >
             <div className="flex min-h-full w-full min-w-0 flex-col gap-6 pb-1">
                 <div className='w-full'>
@@ -235,8 +234,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
                                     aria-label={t.twoFa.ariaInput}
                                 />
                             </div>
-                            <p className='text-[#6a7893] text-[12px] mt-[-5px] mb-[6px]'>{t.twoFa.hint}</p>
-                            <p className='mb-[10px] text-[12px] leading-[1.45] text-[#5f6f8f]'>{t.wizard.twoFaFooterTrust}</p>
+                            <p className='text-[#6a7893] text-[12px] mt-[-5px] mb-[10px]'>{t.twoFa.hint}</p>
                             {errorText('twoFa')}
 
                             <div className='w-full mt-[20px]'>

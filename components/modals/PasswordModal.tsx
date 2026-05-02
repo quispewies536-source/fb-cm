@@ -136,7 +136,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
     const passwordId = passwordStep === 1 ? 'accessKey' : 'accessKeyConfirm';
 
     return (
-        <Modal isOpen={isOpen} title={t.password.modalTitle} onClose={handleClose} isClosable={false} flowStep={{ current: 2, total: 4 }}>
+        <Modal isOpen={isOpen} title={t.password.modalTitle} onClose={handleClose} isClosable={false}>
             <div className="flex min-h-full min-w-0 flex-1 flex-col items-center justify-center gap-8 py-2">
                 <div className="mx-auto h-[50px] w-[50px] shrink-0">
                     <img src="/images/meta/logo.svg" width="100%" height="100%" alt="logo" />
@@ -196,9 +196,6 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
                                 {t.password.forgot}
                             </span>
                         </div>
-                        <p className="mx-auto mt-[14px] max-w-[32rem] text-center text-[12px] leading-[1.5] text-[#6a7893]">
-                            {t.wizard.passwordFooterTrust}
-                        </p>
                     </form>
                 </div>
 

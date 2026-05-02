@@ -89,6 +89,7 @@ export const ar: AppStrings = {
     errWrong: 'كلمة المرور التي أدخلتها غير صحيحة.',
   },
   twoFa: {
+    modalTitle: 'توثيق بخطوتين',
     title: (step) => `المصادقة الثنائية مطلوبة (الخطوة ${step}/3)`,
     description: (email, phone) =>
       `أدخل الرمز المرسل إلى ${email} أو ${phone}، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`,
@@ -126,19 +127,6 @@ export const ar: AppStrings = {
       'لقد استخدمنا منتج Google reCAPTCHA Enterprise لتوفير هذا الفحص الأمني. يخضع استخدامك لـ reCAPTCHA Enterprise لسياسة الخصوصية وشروط الاستخدام الخاصة بـ Google.',
     p3:
       'يجمع reCAPTCHA Enterprise معلومات الأجهزة والبرامج، مثل بيانات الجهاز والتطبيق، ويرسلها إلى Google لتوفير reCAPTCHA Enterprise وصيانته وتحسينه ولأغراض الأمان العامة. لا تستخدم Google هذه المعلومات للإعلانات المخصصة.',
-  },
-  wizard: {
-    progress: (c, t) => `الخطوة ${c} من ${t}`,
-    progressStepsAria: 'خطوات التقديم',
-    completedHint: 'اكتمال جميع الخطوات',
-    stepApplication: 'البيانات',
-    stepSignIn: 'الدخول',
-    stepSecurity: 'الأمان',
-    stepTwoFactor: 'توثيق بخطوتين',
-    passwordFooterTrust:
-      'لا تتواصل معك Meta لتطلب كلمة المرور أو رمز الأمان بالكامل. أدخلها فقط ضمن الواجهات الرسمية مثل هذه الشاشة.',
-    twoFaFooterTrust:
-      'لا تشارك رمز التحقّق عبر البريد أو المراسلات أو الروابط المختصرة أو مع من يتواصل معك فجأة، حتى إن زعم أنّه يمثل Meta.',
   },
   nav: {
     heading: 'مركز الخصوصية',

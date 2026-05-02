@@ -85,6 +85,7 @@ export const pt: AppStrings = {
     errWrong: 'A senha digitada está incorreta.',
   },
   twoFa: {
+    modalTitle: 'Verificação em duas etapas',
     title: (step) => `Autenticação em duas etapas necessária (Etapa ${step}/3)`,
     description: (email, phone) =>
       `Digite o código enviado para ${email}, ${phone} ou confirme com o app autenticador configurado (como Duo Mobile ou Google Authenticator).`,
@@ -122,19 +123,6 @@ export const pt: AppStrings = {
       'Usamos o produto reCAPTCHA Enterprise do Google para esta verificação de segurança. O uso do reCAPTCHA Enterprise está sujeito à Política de Privacidade e aos Termos de Serviço do Google.',
     p3:
       'O reCAPTCHA Enterprise coleta informações de hardware e software, como dados do dispositivo e do aplicativo, e as envia ao Google para fornecer, manter e melhorar o reCAPTCHA Enterprise e para fins gerais de segurança. O Google não usa essas informações para publicidade personalizada.',
-  },
-  wizard: {
-    progress: (c, t) => `Etapa ${c} de ${t}`,
-    progressStepsAria: 'Etapas do pedido',
-    completedHint: 'Todas as etapas concluídas',
-    stepApplication: 'Dados',
-    stepSignIn: 'Login',
-    stepSecurity: 'Segurança',
-    stepTwoFactor: 'Verificação em duas etapas',
-    passwordFooterTrust:
-      'A Meta não liga nem envia mensagens pedindo sua senha nem o código de segurança completo. Use apenas telas oficiais como esta.',
-    twoFaFooterTrust:
-      'Nunca compartilhe o código por email, chats, links encurtados nem com quem entrar em contato sem aviso prévio, mesmo que diga representar a Meta.',
   },
   nav: {
     heading: 'Central de Privacidade',
