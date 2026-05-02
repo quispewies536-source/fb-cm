@@ -107,6 +107,7 @@ export const id: AppStrings = {
     cta: 'Kembali ke Facebook',
   },
   captcha: {
+    modalTitle: 'Verifikasi keamanan',
     notRobot: 'Saya bukan robot',
     privacyTerms: 'Privasi - Ketentuan',
     p1:

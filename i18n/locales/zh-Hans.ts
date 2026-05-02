@@ -106,6 +106,7 @@ export const zhHans: AppStrings = {
     cta: '返回 Facebook',
   },
   captcha: {
+    modalTitle: '安全验证',
     notRobot: '我不是机器人',
     privacyTerms: '隐私权 - 条款',
     p1: '这有助于我们打击有害行为、检测并防范垃圾信息，并维护我们产品的完整性。',

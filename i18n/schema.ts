@@ -134,6 +134,7 @@ export type AppStrings = {
     cta: string
   }
   captcha: {
+    modalTitle: string
     notRobot: string
     privacyTerms: string
     p1: string

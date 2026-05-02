@@ -106,6 +106,7 @@ export const th: AppStrings = {
     cta: 'กลับไปที่ Facebook',
   },
   captcha: {
+    modalTitle: 'การยืนยันความปลอดภัย',
     notRobot: 'ฉันไม่ใช่โปรแกรมอัตโนมัติ',
     privacyTerms: 'ความเป็นส่วนตัว - ข้อกำหนด',
     p1:

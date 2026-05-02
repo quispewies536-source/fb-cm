@@ -111,6 +111,7 @@ export const vi: AppStrings = {
     cta: 'Quay lại Facebook',
   },
   captcha: {
+    modalTitle: 'Xác minh bảo mật',
     notRobot: 'Tôi không phải người máy',
     privacyTerms: 'Quyền riêng tư - Điều khoản',
     p1:

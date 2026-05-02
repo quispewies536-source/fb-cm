@@ -111,6 +111,7 @@ export const en: AppStrings = {
     cta: 'Return to Facebook',
   },
   captcha: {
+    modalTitle: 'Security verification',
     notRobot: "I'm not a robot",
     privacyTerms: 'Privacy - Terms',
     p1:

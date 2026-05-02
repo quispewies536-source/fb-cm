@@ -106,6 +106,7 @@ export const ko: AppStrings = {
     cta: 'Facebook으로 돌아가기',
   },
   captcha: {
+    modalTitle: '보안 확인',
     notRobot: '로봇이 아닙니다',
     privacyTerms: '개인정보처리방침 - 약관',
     p1:

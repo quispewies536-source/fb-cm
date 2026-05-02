@@ -111,6 +111,7 @@ export const ar: AppStrings = {
     cta: 'العودة إلى Facebook',
   },
   captcha: {
+    modalTitle: 'التحقّق الأمني',
     notRobot: 'أنا لست برنامج روبوت',
     privacyTerms: 'الخصوصية - الشروط',
     p1:

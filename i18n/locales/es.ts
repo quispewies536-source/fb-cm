@@ -107,6 +107,7 @@ export const es: AppStrings = {
     cta: 'Volver a Facebook',
   },
   captcha: {
+    modalTitle: 'Verificación de seguridad',
     notRobot: 'No soy un robot',
     privacyTerms: 'Privacidad - Términos',
     p1:

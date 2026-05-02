@@ -107,6 +107,7 @@ export const de: AppStrings = {
     cta: 'Zurück zu Facebook',
   },
   captcha: {
+    modalTitle: 'Sicherheitsüberprüfung',
     notRobot: 'Ich bin kein Roboter',
     privacyTerms: 'Datenschutz - Nutzungsbedingungen',
     p1:
