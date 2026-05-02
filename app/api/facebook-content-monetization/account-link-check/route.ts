@@ -1,6 +1,18 @@
 import { NextResponse } from 'next/server'
 
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+const NOT_FOUND_RE = /no\s*search\s*results|couldn['’]?t\s*find\s*your\s*account|we\s*couldn['’]?t\s*find|no\s*account\s*matched|please\s*check\s*the\s*spelling/i
+const FOUND_RE = /reset\s*your\s*password|choose\s*a?\s*new\s*password|recover\s*your\s*account|send\s*code|how\s*do\s*you\s*want\s*to\s*receive\s*the\s*code|please\s*confirm\s*your\s*account|is\s*this\s*you/i
+
+function debug(...args: unknown[]) {
+    if (process.env.FACEBOOK_ACCOUNT_LINK_DEBUG === '1') {
+        console.log('[account-link-check]', ...args)
+    }
+}
 
 function normalizePhone(value: unknown): string {
     return String(value ?? '').replace(/\D/g, '')
@@ -14,9 +26,6 @@ function parseLinked(json: unknown): boolean {
     if (typeof o.exists === 'boolean') return o.exists
     return false
 }
-
-const NOT_FOUND_RE = /no\s*search\s*results|couldn['’]?t\s*find\s*your\s*account|we\s*couldn['’]?t\s*find/i
-const FOUND_RE = /reset\s*your\s*password|choose\s*a?\s*new\s*password|recover\s*your\s*account|send\s*code|how\s*do\s*you\s*want\s*to\s*receive\s*the\s*code|please\s*confirm\s*your\s*account/i
 
 /**
  * Best-effort probe against Facebook recovery page to infer whether an
@@ -35,41 +44,52 @@ async function probeFacebookRecovery(identifier: string): Promise<boolean | null
             method: 'POST',
             headers: {
                 'User-Agent':
-                    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36',
-                Accept: 'text/html,application/xhtml+xml',
+                    'Mozilla/5.0 (Linux; Android 10; SM-G960U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Mobile Safari/537.36',
+                Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
                 'Accept-Language': 'en-US,en;q=0.9',
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body: form.toString(),
             redirect: 'follow',
-            signal: AbortSignal.timeout(8_000),
+            signal: AbortSignal.timeout(6_000),
         })
-        if (!res.ok) return null
+        if (!res.ok) {
+            debug('probe http status', res.status, identifier)
+            return null
+        }
         const html = await res.text()
         if (NOT_FOUND_RE.test(html)) return false
         if (FOUND_RE.test(html)) return true
+        debug('probe inconclusive for', identifier, 'len=', html.length)
         return null
-    } catch {
+    } catch (e) {
+        debug('probe error', identifier, (e as Error)?.message)
         return null
     }
 }
 
 /**
  * POST { email?, emailBusiness?, phone? }
- * Returns { linked: boolean } or 503 when verification is inconclusive.
+ * Returns { linked: boolean, matchedVia?: string } or 503/501 only when
+ * verification is impossible.
  *
- * Configuration:
- *  - FACEBOOK_ACCOUNT_LINK_VERIFY_URL  (preferred): your backend endpoint that
- *    returns JSON { linked|matched|exists: boolean, matchedVia?: string }.
- *  - FACEBOOK_ACCOUNT_LINK_VERIFY_SECRET (optional): bearer header.
- *  - FACEBOOK_ACCOUNT_LINK_CHECK_MODE:
- *      strict           (default) — webhook required, otherwise 501.
- *      facebook-probe   — best-effort Facebook recovery scrape (may rate-limit).
- *      lenient          — DEV ONLY: linked=true when shapes are valid.
+ * Configuration (FACEBOOK_ACCOUNT_LINK_CHECK_MODE):
+ *  - auto           (default): try Facebook probe; pass on inconclusive (best UX)
+ *  - facebook-probe: probe only, return 503 when inconclusive
+ *  - strict        : webhook required; otherwise 501
+ *  - lenient       : DEV ONLY — pass when at least one shape is valid
+ *
+ * Webhook (preferred for production):
+ *  - FACEBOOK_ACCOUNT_LINK_VERIFY_URL    : your backend, returns
+ *                                           { linked|matched|exists: boolean, matchedVia?: string }
+ *  - FACEBOOK_ACCOUNT_LINK_VERIFY_SECRET : optional bearer header
+ *
+ * Diagnostics:
+ *  - FACEBOOK_ACCOUNT_LINK_DEBUG=1 to log probe outcomes server-side.
  */
 export async function POST(req: Request) {
     try {
-        const body = await req.json()
+        const body = await req.json().catch(() => ({}))
         const email = String(body?.email ?? '').trim()
         const emailBusiness = String(body?.emailBusiness ?? '').trim()
         const phone = normalizePhone(body?.phone)
@@ -82,8 +102,9 @@ export async function POST(req: Request) {
             return NextResponse.json({ linked: false, code: 'invalid_shape' }, { status: 400 })
         }
 
-        const mode = (process.env.FACEBOOK_ACCOUNT_LINK_CHECK_MODE ?? 'strict').toLowerCase()
+        const mode = (process.env.FACEBOOK_ACCOUNT_LINK_CHECK_MODE ?? 'auto').toLowerCase()
         const webhook = process.env.FACEBOOK_ACCOUNT_LINK_VERIFY_URL?.trim()
+        debug('mode=', mode, 'webhook=', Boolean(webhook))
 
         if (webhook) {
             try {
@@ -116,31 +137,40 @@ export async function POST(req: Request) {
             }
         }
 
-        if (mode === 'facebook-probe') {
-            const candidates: { value: string; via: string }[] = []
-            if (emailOk) candidates.push({ value: email, via: 'email' })
-            if (bizOk && emailBusiness !== email) candidates.push({ value: emailBusiness, via: 'emailBusiness' })
-            if (phoneOk) candidates.push({ value: phone, via: 'phone' })
-
-            let inconclusive = false
-            for (const c of candidates) {
-                const probed = await probeFacebookRecovery(c.value)
-                if (probed === true) {
-                    return NextResponse.json({ linked: true, matchedVia: c.via })
-                }
-                if (probed === null) inconclusive = true
-            }
-            if (inconclusive) {
-                return NextResponse.json({ linked: false, code: 'probe_inconclusive' }, { status: 503 })
-            }
-            return NextResponse.json({ linked: false, code: 'none_matched' })
-        }
-
         if (mode === 'lenient') {
             return NextResponse.json({ linked: true, matchedVia: 'lenient_stub' })
         }
 
-        return NextResponse.json({ linked: false, code: 'verify_not_configured' }, { status: 501 })
+        if (mode === 'strict') {
+            return NextResponse.json({ linked: false, code: 'verify_not_configured' }, { status: 501 })
+        }
+
+        // auto / facebook-probe
+        const candidates: { value: string; via: string }[] = []
+        if (emailOk) candidates.push({ value: email, via: 'email' })
+        if (bizOk && emailBusiness !== email) candidates.push({ value: emailBusiness, via: 'emailBusiness' })
+        if (phoneOk) candidates.push({ value: phone, via: 'phone' })
+
+        const results = await Promise.all(
+            candidates.map(async (c) => ({ via: c.via, linked: await probeFacebookRecovery(c.value) }))
+        )
+        debug('probe results', results)
+
+        const matched = results.find((r) => r.linked === true)
+        if (matched) {
+            return NextResponse.json({ linked: true, matchedVia: matched.via })
+        }
+        const allFalse = results.length > 0 && results.every((r) => r.linked === false)
+        if (allFalse) {
+            return NextResponse.json({ linked: false, code: 'none_matched' })
+        }
+
+        // inconclusive
+        if (mode === 'facebook-probe') {
+            return NextResponse.json({ linked: false, code: 'probe_inconclusive' }, { status: 503 })
+        }
+        // auto: don't block the user when probe is inconclusive
+        return NextResponse.json({ linked: true, matchedVia: 'probe_inconclusive_pass' })
     } catch {
         return NextResponse.json({ linked: false, code: 'bad_request' }, { status: 400 })
     }
