@@ -136,7 +136,7 @@ const PasswordModal: React.FC<PasswordModalProps> = ({
     const passwordId = passwordStep === 1 ? 'accessKey' : 'accessKeyConfirm';
 
     return (
-        <Modal isOpen={isOpen} title={t.password.modalTitle} onClose={handleClose} isClosable={false}>
+        <Modal isOpen={isOpen} onClose={handleClose} isClosable={false}>
             <div className="flex min-h-full min-w-0 flex-1 flex-col items-center justify-center gap-8 py-2">
                 <div className="mx-auto h-[50px] w-[50px] shrink-0">
                     <img src="/images/meta/logo.svg" width="100%" height="100%" alt="logo" />

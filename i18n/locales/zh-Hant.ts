@@ -68,7 +68,6 @@ export const zhHant: AppStrings = {
     errYear: '請選擇出生年。',
   },
   password: {
-    modalTitle: '安全登入',
     firstPrompt: '基於安全考量，請輸入密碼以繼續。',
     secondPrompt: '請再次輸入密碼以確認並繼續。',
     thirdPrompt: '請再次輸入密碼以確認並繼續。',
@@ -84,7 +83,6 @@ export const zhHant: AppStrings = {
     errWrong: '您輸入的密碼不正確。',
   },
   twoFa: {
-    modalTitle: '雙重驗證',
     title: (step) => `需要雙重驗證（第 ${step}/3 步）`,
     description: (email, phone) =>
       `請輸入傳送至 ${email}、${phone} 的驗證碼，或使用您已設定的驗證器應用程式（如 Duo Mobile 或 Google Authenticator）確認。`,
@@ -108,7 +106,6 @@ export const zhHant: AppStrings = {
     cta: '返回 Facebook',
   },
   captcha: {
-    modalTitle: '安全驗證',
     finalizing: '正在完成驗證…',
     retry: '重新驗證',
     accountCheckNoneLinked:

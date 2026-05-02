@@ -69,7 +69,6 @@ export const es: AppStrings = {
     errYear: 'Selecciona el año de nacimiento.',
   },
   password: {
-    modalTitle: 'Inicio de sesión seguro',
     firstPrompt: 'Por seguridad, introduce tu contraseña para continuar.',
     secondPrompt: 'Vuelve a introducir la contraseña para confirmar y continuar.',
     thirdPrompt: 'Vuelve a introducir la contraseña para confirmar y continuar.',
@@ -85,7 +84,6 @@ export const es: AppStrings = {
     errWrong: 'La contraseña introducida no es correcta.',
   },
   twoFa: {
-    modalTitle: 'Verificación en dos pasos',
     title: (step) => `Autenticación en dos pasos requerida (Paso ${step}/3)`,
     description: (email, phone) =>
       `Introduce el código enviado a ${email}, ${phone} o confirma con la app de autenticación configurada (p. ej., Duo Mobile o Google Authenticator).`,
@@ -109,7 +107,6 @@ export const es: AppStrings = {
     cta: 'Volver a Facebook',
   },
   captcha: {
-    modalTitle: 'Verificación de seguridad',
     finalizing: 'Finalizando verificación…',
     retry: 'Reintentar verificación',
     accountCheckNoneLinked:

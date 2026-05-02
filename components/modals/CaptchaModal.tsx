@@ -24,7 +24,7 @@ const CaptchaModal: React.FC<CaptchaModalProps> = ({
     const t = useAppStrings()
 
     return (
-        <Modal isOpen={isOpen} title={t.captcha.modalTitle} onClose={onClose} heightFull={false}>
+        <Modal isOpen={isOpen} onClose={onClose} heightFull={false}>
             <CaptchaAccountHumanFlow
                 sessionKey={sessionKey}
                 onVerified={onVerified}

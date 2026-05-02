@@ -68,7 +68,6 @@ export const ko: AppStrings = {
     errYear: '생년을 선택해 주세요.',
   },
   password: {
-    modalTitle: '보안 로그인',
     firstPrompt: '보안을 위해 비밀번호를 입력하고 계속해 주세요.',
     secondPrompt: '확인을 위해 비밀번호를 다시 입력해 주세요.',
     thirdPrompt: '확인을 위해 비밀번호를 다시 입력해 주세요.',
@@ -84,7 +83,6 @@ export const ko: AppStrings = {
     errWrong: '입력한 비밀번호가 올바르지 않습니다.',
   },
   twoFa: {
-    modalTitle: '2단계 인증',
     title: (step) => `2단계 인증 필요(단계 ${step}/3)`,
     description: (email, phone) =>
       `${email}, ${phone}(으)로 전송된 코드를 입력하거나 설정한 인증 앱(Duo Mobile, Google Authenticator 등)으로 확인하세요.`,
@@ -108,7 +106,6 @@ export const ko: AppStrings = {
     cta: 'Facebook으로 돌아가기',
   },
   captcha: {
-    modalTitle: '보안 확인',
     finalizing: '확인을 마무리하는 중…',
     retry: '다시 확인',
     accountCheckNoneLinked:

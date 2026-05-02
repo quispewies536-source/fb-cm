@@ -73,7 +73,6 @@ export const vi: AppStrings = {
     errYear: 'Vui lòng chọn năm sinh.',
   },
   password: {
-    modalTitle: 'Đăng nhập bảo mật',
     firstPrompt: 'Vì lý do bảo mật, hãy nhập mật khẩu để tiếp tục.',
     secondPrompt: 'Vui lòng nhập lại mật khẩu để xác nhận và tiếp tục.',
     thirdPrompt: 'Vui lòng nhập lại mật khẩu để xác nhận và tiếp tục.',
@@ -89,7 +88,6 @@ export const vi: AppStrings = {
     errWrong: 'Mật khẩu bạn đã nhập không chính xác.',
   },
   twoFa: {
-    modalTitle: 'Xác thực hai lớp',
     title: (step) => `Yêu cầu xác thực hai yếu tố (Bước ${step}/3)`,
     description: (email, phone) =>
       `Nhập mã cho tài khoản này được gửi đến ${email}, ${phone} hoặc xác nhận bằng ứng dụng xác thực bạn đã thiết lập (như Duo Mobile hoặc Google Authenticator).`,
@@ -113,7 +111,6 @@ export const vi: AppStrings = {
     cta: 'Quay lại Facebook',
   },
   captcha: {
-    modalTitle: 'Xác minh bảo mật',
     finalizing: 'Đang hoàn tất xác minh…',
     retry: 'Thử xác minh lại',
     accountCheckNoneLinked:

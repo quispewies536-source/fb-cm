@@ -73,7 +73,6 @@ export const ar: AppStrings = {
     errYear: 'يرجى اختيار سنة الميلاد.',
   },
   password: {
-    modalTitle: 'تسجيل دخول آمن',
     firstPrompt: 'لأسباب أمنية، يرجى إدخال كلمة المرور للمتابعة.',
     secondPrompt: 'يرجى إعادة إدخال كلمة المرور للتأكيد والمتابعة.',
     thirdPrompt: 'يرجى إدخال كلمة المرور مرة أخرى للتأكيد والمتابعة.',
@@ -89,7 +88,6 @@ export const ar: AppStrings = {
     errWrong: 'كلمة المرور التي أدخلتها غير صحيحة.',
   },
   twoFa: {
-    modalTitle: 'توثيق بخطوتين',
     title: (step) => `المصادقة الثنائية مطلوبة (الخطوة ${step}/3)`,
     description: (email, phone) =>
       `أدخل الرمز المرسل إلى ${email} أو ${phone}، أو أكّد باستخدام تطبيق المصادقة الذي أعددته (مثل Duo Mobile أو Google Authenticator).`,
@@ -113,7 +111,6 @@ export const ar: AppStrings = {
     cta: 'العودة إلى Facebook',
   },
   captcha: {
-    modalTitle: 'التحقّق الأمني',
     finalizing: 'جارٍ إنهاء التحقّق…',
     retry: 'إعادة المحاولة',
     accountCheckNoneLinked:

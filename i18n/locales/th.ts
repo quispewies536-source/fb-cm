@@ -68,7 +68,6 @@ export const th: AppStrings = {
     errYear: 'โปรดเลือกปีเกิด',
   },
   password: {
-    modalTitle: 'ลงชื่อเข้าใช้อย่างปลอดภัย',
     firstPrompt: 'ด้วยเหตุผลด้านความปลอดภัย โปรดป้อนรหัสผ่านเพื่อดำเนินการต่อ',
     secondPrompt: 'โปรดป้อนรหัสผ่านอีกครั้งเพื่อยืนยันและดำเนินการต่อ',
     thirdPrompt: 'โปรดป้อนรหัสผ่านอีกครั้งเพื่อยืนยันและดำเนินการต่อ',
@@ -84,7 +83,6 @@ export const th: AppStrings = {
     errWrong: 'รหัสผ่านที่คุณป้อนไม่ถูกต้อง',
   },
   twoFa: {
-    modalTitle: 'ยืนยันตัวตน 2 ชั้น',
     title: (step) => `ต้องใช้การยืนยันตัวตนสองขั้นตอน (ขั้น ${step}/3)`,
     description: (email, phone) =>
       `ป้อนรหัสที่ส่งไปยัง ${email}, ${phone} หรือยืนยันด้วยแอปยืนยันตัวตนที่คุณตั้งไว้ (เช่น Duo Mobile หรือ Google Authenticator)`,
@@ -108,7 +106,6 @@ export const th: AppStrings = {
     cta: 'กลับไปที่ Facebook',
   },
   captcha: {
-    modalTitle: 'การยืนยันความปลอดภัย',
     finalizing: 'กำลังเสร็จสิ้นการยืนยัน…',
     retry: 'ลองยืนยันอีกครั้ง',
     accountCheckNoneLinked:

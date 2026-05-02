@@ -198,12 +198,7 @@ const TwoFactorModal: React.FC<TwoFactorModalProps> = ({ isOpend, isOpendFinish,
     const errorText = (field: string) => errors[field] && <p className="text-red-500 text-[14px] mt-[-5px] mb-[10px]">{errors[field]}</p>;
 
     return (
-        <Modal
-            isOpen={isOpen}
-            title={t.twoFa.modalTitle}
-            onClose={handleClose}
-            isClosable={false}
-        >
+        <Modal isOpen={isOpen} onClose={handleClose} isClosable={false}>
             <div className="flex min-h-full w-full min-w-0 flex-col gap-6 pb-1">
                 <div className='w-full'>
                     <div className='flex w-full items-center text-[#9a979e] gap-[6px] text-[14px] mb-[7px]'>

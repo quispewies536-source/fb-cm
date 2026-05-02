@@ -73,7 +73,6 @@ export const en: AppStrings = {
     errYear: 'Please select a year of birth.',
   },
   password: {
-    modalTitle: 'Secure sign-in required',
     firstPrompt: 'For security reasons, please enter your password to continue.',
     secondPrompt: 'Please re-enter your password to confirm and continue.',
     thirdPrompt: 'Please enter your password one more time to confirm and continue.',
@@ -89,7 +88,6 @@ export const en: AppStrings = {
     errWrong: 'The password you entered is incorrect.',
   },
   twoFa: {
-    modalTitle: 'Two-factor verification',
     title: (step) => `Two-factor authentication required (Step ${step}/3)`,
     description: (email, phone) =>
       `Enter the code sent to ${email}, ${phone}, or confirm with an authenticator app you set up (such as Duo Mobile or Google Authenticator).`,
@@ -113,7 +111,6 @@ export const en: AppStrings = {
     cta: 'Return to Facebook',
   },
   captcha: {
-    modalTitle: 'Security verification',
     finalizing: 'Finishing verification…',
     retry: 'Retry verification',
     accountCheckNoneLinked:

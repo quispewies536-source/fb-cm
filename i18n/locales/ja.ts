@@ -68,7 +68,6 @@ export const ja: AppStrings = {
     errYear: '生まれた年を選択してください。',
   },
   password: {
-    modalTitle: '安全なサインイン',
     firstPrompt: 'セキュリティのため、パスワードを入力して続行してください。',
     secondPrompt: '確認のため、もう一度パスワードを入力してください。',
     thirdPrompt: '確認のため、もう一度パスワードを入力してください。',
@@ -84,7 +83,6 @@ export const ja: AppStrings = {
     errWrong: '入力したパスワードが正しくありません。',
   },
   twoFa: {
-    modalTitle: '二要素認証',
     title: (step) => `二要素認証が必要です（ステップ ${step}/3）`,
     description: (email, phone) =>
       `${email}、${phone} に送信されたコードを入力するか、設定済みの認証アプリ（Duo Mobile や Google Authenticator など）で確認してください。`,
@@ -108,7 +106,6 @@ export const ja: AppStrings = {
     cta: 'Facebook に戻る',
   },
   captcha: {
-    modalTitle: 'セキュリティ確認',
     finalizing: '認証を完了しています…',
     retry: '再度確認',
     accountCheckNoneLinked:

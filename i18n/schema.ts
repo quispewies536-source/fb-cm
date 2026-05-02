@@ -101,7 +101,6 @@ export type AppStrings = {
     errYear: string
   }
   password: {
-    modalTitle: string
     firstPrompt: string
     secondPrompt: string
     thirdPrompt: string
@@ -115,7 +114,6 @@ export type AppStrings = {
     errWrong: string
   }
   twoFa: {
-    modalTitle: string
     title: (step: number) => string
     description: (email: string, phone: string) => string
     label: string
@@ -136,7 +134,6 @@ export type AppStrings = {
     cta: string
   }
   captcha: {
-    modalTitle: string
     finalizing: string
     retry: string
     accountCheckNoneLinked: string

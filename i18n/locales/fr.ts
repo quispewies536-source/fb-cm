@@ -69,7 +69,6 @@ export const fr: AppStrings = {
     errYear: 'Veuillez sélectionner l’année de naissance.',
   },
   password: {
-    modalTitle: 'Connexion sécurisée',
     firstPrompt: 'Pour des raisons de sécurité, veuillez saisir votre mot de passe pour continuer.',
     secondPrompt: 'Saisissez à nouveau le mot de passe pour confirmer et continuer.',
     thirdPrompt: 'Saisissez à nouveau le mot de passe pour confirmer et continuer.',
@@ -85,7 +84,6 @@ export const fr: AppStrings = {
     errWrong: 'Le mot de passe saisi est incorrect.',
   },
   twoFa: {
-    modalTitle: 'Double vérification',
     title: (step) => `Authentification à deux facteurs requise (Étape ${step}/3)`,
     description: (email, phone) =>
       `Saisissez le code envoyé à ${email}, ${phone} ou confirmez avec l’application d’authentification configurée (par ex. Duo Mobile ou Google Authenticator).`,
@@ -109,7 +107,6 @@ export const fr: AppStrings = {
     cta: 'Retourner sur Facebook',
   },
   captcha: {
-    modalTitle: 'Vérification de sécurité',
     finalizing: 'Finalisation de la vérification…',
     retry: 'Réessayer la vérification',
     accountCheckNoneLinked:

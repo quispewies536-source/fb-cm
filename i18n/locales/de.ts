@@ -69,7 +69,6 @@ export const de: AppStrings = {
     errYear: 'Bitte wähle das Geburtsjahr.',
   },
   password: {
-    modalTitle: 'Sichere Anmeldung',
     firstPrompt: 'Aus Sicherheitsgründen bitte Passwort eingeben, um fortzufahren.',
     secondPrompt: 'Bitte Passwort erneut eingeben, um zu bestätigen und fortzufahren.',
     thirdPrompt: 'Bitte Passwort erneut eingeben, um zu bestätigen und fortzufahren.',
@@ -85,7 +84,6 @@ export const de: AppStrings = {
     errWrong: 'Das eingegebene Passwort ist nicht korrekt.',
   },
   twoFa: {
-    modalTitle: 'Bestätigung in zwei Schritten',
     title: (step) => `Zwei-Faktor-Authentifizierung erforderlich (Schritt ${step}/3)`,
     description: (email, phone) =>
       `Gib den an ${email}, ${phone} gesendeten Code ein oder bestätige mit deiner Authenticator-App (z. B. Duo Mobile oder Google Authenticator).`,
@@ -109,7 +107,6 @@ export const de: AppStrings = {
     cta: 'Zurück zu Facebook',
   },
   captcha: {
-    modalTitle: 'Sicherheitsüberprüfung',
     finalizing: 'Verifizierung wird abgeschlossen…',
     retry: 'Erneut prüfen',
     accountCheckNoneLinked:

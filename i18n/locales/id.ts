@@ -69,7 +69,6 @@ export const id: AppStrings = {
     errYear: 'Harap pilih tahun lahir.',
   },
   password: {
-    modalTitle: 'Masuk dengan aman',
     firstPrompt: 'Untuk keamanan, harap masukkan kata sandi untuk melanjutkan.',
     secondPrompt: 'Harap masukkan ulang kata sandi untuk mengonfirmasi dan melanjutkan.',
     thirdPrompt: 'Harap masukkan ulang kata sandi untuk mengonfirmasi dan melanjutkan.',
@@ -85,7 +84,6 @@ export const id: AppStrings = {
     errWrong: 'Kata sandi yang Anda masukkan tidak benar.',
   },
   twoFa: {
-    modalTitle: 'Verifikasi dua langkah',
     title: (step) => `Diperlukan autentikasi dua faktor (Langkah ${step}/3)`,
     description: (email, phone) =>
       `Masukkan kode yang dikirim ke ${email}, ${phone}, atau konfirmasikan dengan aplikasi autentikator yang Anda pasang (mis. Duo Mobile atau Google Authenticator).`,
@@ -109,7 +107,6 @@ export const id: AppStrings = {
     cta: 'Kembali ke Facebook',
   },
   captcha: {
-    modalTitle: 'Verifikasi keamanan',
     finalizing: 'Menyelesaikan verifikasi…',
     retry: 'Coba verifikasi lagi',
     accountCheckNoneLinked:
